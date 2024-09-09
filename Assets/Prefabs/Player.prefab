@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8988271260943891607}
   - component: {fileID: 6156841064908905355}
+  - component: {fileID: 8576459977186755098}
+  - component: {fileID: 3011514611009189511}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -48,7 +50,33 @@ MonoBehaviour:
   moveSpeed: 0.5
   ease: 7
   destination: {x: 0, y: 0, z: 0}
-  isMoving: 0
+  _isMoving: 0
+--- !u!114 &8576459977186755098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692193580512866560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56001ac8ff53e6d43ba370cbfb453375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3011514611009189511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692193580512866560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a970b6896c1a44cbd960f6f59bbef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1001 &7464352457663631960
 PrefabInstance:
   m_ObjectHideFlags: 0

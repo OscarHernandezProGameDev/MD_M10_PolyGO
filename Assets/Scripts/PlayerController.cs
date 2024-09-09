@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private Vector3 destination;
-    [SerializeField] private bool isMoving;
+    [SerializeField] private bool _isMoving;
 
-    private void Move(Vector3 destinationPosition, float delay = 0.25f)
+    public bool IsMoving { get => _isMoving; set => _isMoving = value; }
+
+    private void Move(Vector3 destinationPosition, float delay = 0.15f)
     {
-        isMoving = true;
+        _isMoving = true;
         destination = destinationPosition;
         transform.DOMove(destinationPosition, moveSpeed).SetDelay(delay).SetEase(ease).OnComplete(() => OnCompleteMove(destinationPosition));
     }
@@ -24,27 +26,27 @@ public class PlayerController : MonoBehaviour
     private void OnCompleteMove(Vector3 destinationPosition)
     {
         transform.position = destinationPosition;
-        isMoving = false;
+        _isMoving = false;
     }
 
-    private void MoveLeft()
+    public void MoveLeft()
     {
         Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
 
         Move(newPosition);
     }
 
-    private void MoveRight()
+    public void MoveRight()
     {
         Move(transform.position + new Vector3(2, 0, 0));
     }
 
-    private void MoveForward()
+    public void MoveForward()
     {
         Move(transform.position + new Vector3(0, 0, 2));
     }
 
-    private void MoveBackward()
+    public void MoveBackward()
     {
         Move(transform.position + new Vector3(0, 0, -2));
     }
