@@ -14,10 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 destination;
     [SerializeField] private bool isMoving;
 
-    void Start()
-    {        
-    }
-
     private void Move(Vector3 destinationPosition, float delay = 0.25f)
     {
         isMoving = true;
