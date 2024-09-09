@@ -4,50 +4,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace PolyGo.Player
 {
-    [Header("Settings")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private Ease ease;
-
-    [Header("Debug")]
-    [SerializeField] private Vector3 destination;
-    [SerializeField] private bool _isMoving;
-
-    public bool IsMoving { get => _isMoving; set => _isMoving = value; }
-
-    private void Move(Vector3 destinationPosition, float delay = 0.15f)
+    public class PlayerController : MonoBehaviour
     {
-        _isMoving = true;
-        destination = destinationPosition;
-        transform.DOMove(destinationPosition, moveSpeed).SetDelay(delay).SetEase(ease).OnComplete(() => OnCompleteMove(destinationPosition));
-    }
+        [Header("Settings")]
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private Ease ease;
 
-    private void OnCompleteMove(Vector3 destinationPosition)
-    {
-        transform.position = destinationPosition;
-        _isMoving = false;
-    }
+        [Header("Debug")]
+        [SerializeField] private Vector3 destination;
+        [SerializeField] private bool _isMoving;
 
-    public void MoveLeft()
-    {
-        Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
+        public bool IsMoving { get => _isMoving; set => _isMoving = value; }
 
-        Move(newPosition);
-    }
+        private void Move(Vector3 destinationPosition, float delay = 0.15f)
+        {
+            _isMoving = true;
+            destination = destinationPosition;
+            transform.DOMove(destinationPosition, moveSpeed).SetDelay(delay).SetEase(ease).OnComplete(() => OnCompleteMove(destinationPosition));
+        }
 
-    public void MoveRight()
-    {
-        Move(transform.position + new Vector3(2, 0, 0));
-    }
+        private void OnCompleteMove(Vector3 destinationPosition)
+        {
+            transform.position = destinationPosition;
+            _isMoving = false;
+        }
 
-    public void MoveForward()
-    {
-        Move(transform.position + new Vector3(0, 0, 2));
-    }
+        public void MoveLeft()
+        {
+            Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
 
-    public void MoveBackward()
-    {
-        Move(transform.position + new Vector3(0, 0, -2));
+            Move(newPosition);
+        }
+
+        public void MoveRight()
+        {
+            Move(transform.position + new Vector3(2, 0, 0));
+        }
+
+        public void MoveForward()
+        {
+            Move(transform.position + new Vector3(0, 0, 2));
+        }
+
+        public void MoveBackward()
+        {
+            Move(transform.position + new Vector3(0, 0, -2));
+        }
     }
 }

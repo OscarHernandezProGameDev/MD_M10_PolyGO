@@ -2,41 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-[RequireComponent(typeof(PlayerInput))]
-public class PlayerManager : MonoBehaviour
+namespace PolyGo.Player
 {
-    public PlayerController playerController;
-    public PlayerInput playerInput;
-
-    void Awake()
+    [RequireComponent(typeof(PlayerController))]
+    [RequireComponent(typeof(PlayerInput))]
+    public class PlayerManager : MonoBehaviour
     {
-        playerController = GetComponent<PlayerController>();
-        playerInput = GetComponent<PlayerInput>();
-        playerInput.InputEnabled = true;
-    }
+        public PlayerController playerController;
+        public PlayerInput playerInput;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerController.IsMoving)
-            return;
-
-        playerInput.GetKeyInput();
-
-        if (playerInput.V == 0)
+        void Awake()
         {
-            if (playerInput.H > 0)
-                playerController.MoveRight();
-            else if (playerInput.H < 0)
-                playerController.MoveLeft();
+            playerController = GetComponent<PlayerController>();
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.InputEnabled = true;
         }
-        else if (playerInput.H == 0)
+
+        // Update is called once per frame
+        void Update()
         {
-            if (playerInput.V > 0)
-                playerController.MoveForward();
-            else if (playerInput.V < 0)
-                playerController.MoveBackward();
+            if (playerController.IsMoving)
+                return;
+
+            playerInput.GetKeyInput();
+
+            if (playerInput.V == 0)
+            {
+                if (playerInput.H > 0)
+                    playerController.MoveRight();
+                else if (playerInput.H < 0)
+                    playerController.MoveLeft();
+            }
+            else if (playerInput.H == 0)
+            {
+                if (playerInput.V > 0)
+                    playerController.MoveForward();
+                else if (playerInput.V < 0)
+                    playerController.MoveBackward();
+            }
         }
     }
 }
