@@ -14,7 +14,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 destination;
     [SerializeField] private bool isMoving;
 
-    public void Move(Vector3 destinationPosition, float delay = 0.25f)
+    void Start()
+    {
+        //Move(new Vector3(0, 0, 2), 1);
+        //Move(new Vector3(-2, 0, 2), 2);
+        //Move(new Vector3(-2, 0, 4), 3);
+        //Move(new Vector3(0, 0, 4), 4);
+        StartCoroutine(Test());
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(1);
+        MoveLeft();
+        yield return new WaitForSeconds(2);
+        MoveRight();
+        yield return new WaitForSeconds(2);
+        MoveForward();
+        yield return new WaitForSeconds(2);
+        MoveBackward();
+    }
+
+    private void Move(Vector3 destinationPosition, float delay = 0.25f)
     {
         isMoving = true;
         destination = destinationPosition;
@@ -27,11 +48,25 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
     }
 
-    void Start()
+    private void MoveLeft()
     {
-        Move(new Vector3(0, 0, 2), 1);
-        Move(new Vector3(-2, 0, 2), 2);
-        Move(new Vector3(-2, 0, 4), 3);
-        Move(new Vector3(0, 0, 4), 4);
+        Vector3 newPosition = transform.position + new Vector3(-2, 0, 0);
+
+        Move(newPosition);
+    }
+
+    private void MoveRight()
+    {
+        Move(transform.position + new Vector3(2, 0, 0));
+    }
+
+    private void MoveForward()
+    {
+        Move(transform.position + new Vector3(0, 0, 2));
+    }
+
+    private void MoveBackward()
+    {
+        Move(transform.position + new Vector3(0, 0, -2));
     }
 }
