@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6318236113763239315}
+  - component: {fileID: 7928974275277459942}
   m_Layer: 0
   m_Name: Dot
   m_TagString: Untagged
@@ -115,3 +116,21 @@ Transform:
   - {fileID: 7261077198565068203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7928974275277459942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291140188110252638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd400a168b2e753438582ea28fe631bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotMeshPrefab: {fileID: 7810625907010894121}
+  scaleTime: 0.3
+  delay: 1
+  finalScale: {x: 0.35, y: 0.015, z: 0.35}
+  autoRun: 1
+  ease: 7
