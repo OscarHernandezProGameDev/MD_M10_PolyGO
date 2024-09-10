@@ -130,7 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotMeshPrefab: {fileID: 7810625907010894121}
   scaleTime: 0.3
-  delay: 1
+  delay: 0.2
   finalScale: {x: 0.35, y: 0.015, z: 0.35}
-  autoRun: 1
+  autoRun: 0
   ease: 7
+  isInittialized: 0

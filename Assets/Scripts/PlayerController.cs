@@ -8,11 +8,8 @@ namespace PolyGo.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [Header("Settings")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private Ease ease;
-
-        [Header("Debug")]
         [SerializeField] private Vector3 destination;
         [SerializeField] private bool _isMoving;
 

@@ -14,6 +14,7 @@ namespace PolyGo
         [SerializeField] private Vector3 finalScale;
         [SerializeField] private bool autoRun;
         [SerializeField] private Ease ease = Ease.InOutQuad;
+        [SerializeField] private bool isInittialized;
 
         private Vector2 _dotPosition;
         private List<Dot> _dotsBrothers;
@@ -34,7 +35,7 @@ namespace PolyGo
             {
                 dotMeshPrefab.transform.localScale = Vector3.zero;
                 if (autoRun)
-                    ShowDotMesh();
+                    InitDot();
                 if (gridSystem != null)
                     _dotsBrothers = FindDotsBrothers(gridSystem.AllDots);
             }
@@ -59,6 +60,24 @@ namespace PolyGo
             }
 
             return result;
+        }
+
+        public void InitDot()
+        {
+            if (!isInittialized)
+            {
+                ShowDotMesh();
+                StartCoroutine(InitDotCoroutine());
+                isInittialized = true;
+            }
+        }
+
+        private IEnumerator InitDotCoroutine()
+        {
+            yield return new WaitForSeconds(delay);
+
+            foreach (var dot in _dotsBrothers)
+                dot.InitDot();
         }
     }
 }
