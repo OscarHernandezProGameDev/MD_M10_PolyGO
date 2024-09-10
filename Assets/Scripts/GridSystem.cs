@@ -16,9 +16,9 @@ namespace PolyGo
             new Vector2(0, -spacing),
         };
 
-        private List<Dot> allDots = new List<Dot>();
+        private List<Dot> _allDots = new List<Dot>();
 
-        public List<Dot> AllDots => allDots;
+        public List<Dot> AllDots => _allDots;
 
         private void Awake()
         {
@@ -29,7 +29,7 @@ namespace PolyGo
         {
             Dot[] dotsArray = FindObjectsOfType<Dot>();
 
-            allDots.AddRange(dotsArray);
+            _allDots.AddRange(dotsArray);
         }
     }
 }
