@@ -51,6 +51,7 @@ MonoBehaviour:
   ease: 7
   destination: {x: 0, y: 0, z: 0}
   _isMoving: 0
+  space: 2
 --- !u!114 &8576459977186755098
 MonoBehaviour:
   m_ObjectHideFlags: 0
