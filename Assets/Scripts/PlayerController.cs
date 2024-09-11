@@ -12,15 +12,31 @@ namespace PolyGo.Player
         [SerializeField] private Ease ease;
         [SerializeField] private Vector3 destination;
         [SerializeField] private bool _isMoving;
-        [SerializeField]private int space;
+
+        private GridSystem gridSystem;
 
         public bool IsMoving { get => _isMoving; set => _isMoving = value; }
 
+        void Awake()
+        {
+            gridSystem = FindFirstObjectByType<GridSystem>();
+        }
+
         private void Move(Vector3 destinationPosition, float delay = 0.15f)
         {
-            _isMoving = true;
-            destination = destinationPosition;
-            transform.DOMove(destinationPosition, moveSpeed).SetDelay(delay).SetEase(ease).OnComplete(() => OnCompleteMove(destinationPosition));
+            if (gridSystem != null)
+            {
+                Dot dotDestination = gridSystem.FindValidDot(destinationPosition);
+                if (dotDestination != null)
+                {
+                    _isMoving = true;
+                    destination = destinationPosition;
+                    transform.DOMove(destinationPosition, moveSpeed)
+                        .SetDelay(delay)
+                        .SetEase(ease)
+                        .OnComplete(() => OnCompleteMove(destinationPosition));
+                }
+            }
         }
 
         private void OnCompleteMove(Vector3 destinationPosition)
@@ -31,24 +47,24 @@ namespace PolyGo.Player
 
         public void MoveLeft()
         {
-            Vector3 newPosition = transform.position + new Vector3(-space, 0, 0);
+            Vector3 newPosition = transform.position + new Vector3(-GridSystem.spacing, 0, 0);
 
             Move(newPosition);
         }
 
         public void MoveRight()
         {
-            Move(transform.position + new Vector3(space, 0, 0));
+            Move(transform.position + new Vector3(GridSystem.spacing, 0, 0));
         }
 
         public void MoveForward()
         {
-            Move(transform.position + new Vector3(0, 0, space));
+            Move(transform.position + new Vector3(0, 0, GridSystem.spacing));
         }
 
         public void MoveBackward()
         {
-            Move(transform.position + new Vector3(0, 0, -space));
+            Move(transform.position + new Vector3(0, 0, -GridSystem.spacing));
         }
     }
 }

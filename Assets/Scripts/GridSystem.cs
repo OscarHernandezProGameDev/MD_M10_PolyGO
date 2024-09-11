@@ -20,6 +20,13 @@ namespace PolyGo
 
         public List<Dot> AllDots => _allDots;
 
+        public Dot FindValidDot(Vector3 destinationPosition)
+        {
+            Vector2 gridPosition = Tools.Utilities.Vector2Round(new Vector2(destinationPosition.x, destinationPosition.z));
+
+            return _allDots.Find(dot => dot.DotPosition == gridPosition);
+        }
+
         private void Awake()
         {
             GetDotList();
