@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleTime: 0.5
-  delay: 2
+  delay: 0.2
   lineTickness: 0.09
   lineHeight: 0.015
   ease: 7

@@ -129,8 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotMeshPrefab: {fileID: 7810625907010894121}
+  lineMeshPrefab: {fileID: 2367127654995666297, guid: 9dd429e3b259990028c2d7952228b329,
+    type: 3}
   scaleTime: 0.3
-  delay: 0.2
+  delay: 0.15
   finalScale: {x: 0.35, y: 0.015, z: 0.35}
   autoRun: 0
   ease: 7

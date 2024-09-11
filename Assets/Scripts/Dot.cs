@@ -9,6 +9,7 @@ namespace PolyGo
     public class Dot : MonoBehaviour
     {
         [SerializeField] private GameObject dotMeshPrefab;
+        [SerializeField] private GameObject lineMeshPrefab;
         [SerializeField] private float scaleTime;
         [SerializeField] private float delay;
         [SerializeField] private Vector3 finalScale;
@@ -77,7 +78,25 @@ namespace PolyGo
             yield return new WaitForSeconds(delay);
 
             foreach (var dot in _dotsBrothers)
+            {
+                ConnectDotLines(dot);
                 dot.InitDot();
+            }
+        }
+
+        private void ConnectDotLines(Dot dot)
+        {
+            if (lineMeshPrefab != null)
+            {
+                GameObject lineInstance = Instantiate(lineMeshPrefab, transform.position, Quaternion.identity);
+
+                lineInstance.transform.parent = transform;
+
+                Lineconnection lineConnection = lineInstance.GetComponent<Lineconnection>();
+
+                if (lineConnection != null)
+                    lineConnection.DrawLine(transform.position, dot.transform.position);
+            }
         }
     }
 }
