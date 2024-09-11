@@ -18,11 +18,13 @@ namespace PolyGo
         [SerializeField] private bool isInittialized;
 
         private Vector2 _dotPosition;
-        private List<Dot> _dotsBrothers;
+        private List<Dot> _dotsBrothers = new List<Dot>();
+        private List<Dot> _connectedDots = new List<Dot>();
         private GridSystem gridSystem;
 
         public Vector2 DotPosition => Tools.Utilities.Vector2Round(_dotPosition);
         public List<Dot> DotsBrothers => _dotsBrothers;
+        public List<Dot> ConnectedDots => _connectedDots;
 
         private void Awake()
         {
@@ -79,8 +81,11 @@ namespace PolyGo
 
             foreach (var dot in _dotsBrothers)
             {
-                ConnectDotLines(dot);
-                dot.InitDot();
+                if (!_connectedDots.Contains(dot))
+                {
+                    ConnectDotLines(dot);
+                    dot.InitDot();
+                }
             }
         }
 
@@ -96,6 +101,11 @@ namespace PolyGo
 
                 if (lineConnection != null)
                     lineConnection.DrawLine(transform.position, dot.transform.position);
+
+                if (!_connectedDots.Contains(dot))
+                    _connectedDots.Add(dot);
+                if (!dot.ConnectedDots.Contains(this))
+                    dot.ConnectedDots.Add(this);
             }
         }
     }
