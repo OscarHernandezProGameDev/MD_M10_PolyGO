@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PolyGo.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PolyGo
 {
@@ -78,7 +79,23 @@ namespace PolyGo
 
         IEnumerator EndLevelRoutine()
         {
-            yield break;
+            playerManager.playerInput.InputEnabled = false;
+            // Mostrar pantalla fin de nivel
+
+            while (!_hasLevelFinished)
+            {
+                // Boton de continuar
+                // _hasLevelFinished = true;
+                yield return null;
+            }
+            RestartNivel();
+        }
+
+        private void RestartNivel()
+        {
+            Scene scene = SceneManager.GetActiveScene();
+
+            SceneManager.LoadScene(scene.name);
         }
     }
 }
