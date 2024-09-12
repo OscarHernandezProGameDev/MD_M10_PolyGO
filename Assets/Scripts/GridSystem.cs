@@ -56,5 +56,12 @@ namespace PolyGo
 
             _allDots.AddRange(dotsArray);
         }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(0, 0, 1, 0.7f);
+            if (_activePlayerDot != null)
+                Gizmos.DrawSphere(_activePlayerDot.transform.position, 1);
+        }
     }
 }

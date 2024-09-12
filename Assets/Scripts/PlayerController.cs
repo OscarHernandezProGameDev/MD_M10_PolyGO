@@ -32,7 +32,8 @@ namespace PolyGo.Player
             if (gridSystem != null)
             {
                 Dot dotDestination = gridSystem.FindValidDot(destinationPosition);
-                if (dotDestination != null)
+
+                if (dotDestination != null && gridSystem.ActivePlayerDot.ConnectedDots.Contains(dotDestination))
                 {
                     _isMoving = true;
                     destination = destinationPosition;
