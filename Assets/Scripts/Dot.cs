@@ -14,7 +14,6 @@ namespace PolyGo
         [SerializeField] private float scaleTime;
         [SerializeField] private float delay;
         [SerializeField] private Vector3 finalScale;
-        [SerializeField] private bool autoRun;
         [SerializeField] private Ease ease = Ease.InOutQuad;
         [SerializeField] private LayerMask blockerLayer;
         [SerializeField] private bool isInittialized;
@@ -41,8 +40,6 @@ namespace PolyGo
             if (dotMeshPrefab != null)
             {
                 dotMeshPrefab.transform.localScale = Vector3.zero;
-                if (autoRun)
-                    InitDot();
                 if (gridSystem != null)
                     _dotsBrothers = FindDotsBrothers(gridSystem.AllDots);
             }

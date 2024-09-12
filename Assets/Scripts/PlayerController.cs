@@ -25,6 +25,8 @@ namespace PolyGo.Player
         private void Start()
         {
             UpdateGrid();
+            if (gridSystem != null && gridSystem.ActivePlayerDot != null)
+                gridSystem.ActivePlayerDot.InitDot();
         }
 
         private void Move(Vector3 destinationPosition, float delay = 0.15f)
