@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace PolyGo
 {
@@ -15,9 +16,11 @@ namespace PolyGo
         [SerializeField] private Vector3 finalScale;
         [SerializeField] private bool autoRun;
         [SerializeField] private Ease ease = Ease.InOutQuad;
+        [SerializeField] private LayerMask blockerLayer;
         [SerializeField] private bool isInittialized;
 
         private Vector2 _dotPosition;
+        private Transform m_Transform;
         private List<Dot> _dotsBrothers = new List<Dot>();
         private List<Dot> _connectedDots = new List<Dot>();
         private GridSystem gridSystem;
@@ -29,6 +32,7 @@ namespace PolyGo
         private void Awake()
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
+            m_Transform = GetComponent<Transform>();
             _dotPosition = new Vector2(transform.position.x, transform.position.z);
         }
 
@@ -83,10 +87,28 @@ namespace PolyGo
             {
                 if (!_connectedDots.Contains(dot))
                 {
-                    ConnectDotLines(dot);
-                    dot.InitDot();
+                    Blocker blocker = FindBlocker(dot);
+
+                    if (blocker == null)
+                    {
+                        ConnectDotLines(dot);
+                        dot.InitDot();
+                    }
                 }
             }
+        }
+
+        private Blocker FindBlocker(Dot dot)
+        {
+            Vector3 position = m_Transform.position;
+            Vector3 direction = (dot.transform.position - position).normalized;
+            RaycastHit hit;
+
+            if (Physics.Raycast(position, direction, out hit, GridSystem.spacing, blockerLayer))
+            {
+                return hit.collider.gameObject.GetComponent<Blocker>();
+            }
+            return null;
         }
 
         private void ConnectDotLines(Dot dot)

@@ -136,4 +136,7 @@ MonoBehaviour:
   finalScale: {x: 0.35, y: 0.015, z: 0.35}
   autoRun: 0
   ease: 7
+  blockerLayer:
+    serializedVersion: 2
+    m_Bits: 64
   isInittialized: 0

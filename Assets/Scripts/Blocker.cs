@@ -6,12 +6,12 @@ namespace PolyGo
 {
     public class Blocker : MonoBehaviour
     {
-        BoxCollider2D boxCollider;
+        BoxCollider boxCollider;
         [SerializeField] private Vector3 blockSize;
 
         private void Awake()
         {
-            boxCollider = GetComponent<BoxCollider2D>();
+            boxCollider = GetComponent<BoxCollider>();
             boxCollider.size = blockSize;
         }
 
