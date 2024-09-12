@@ -1,3 +1,4 @@
+using PolyGo.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,8 +18,11 @@ namespace PolyGo
         };
 
         private List<Dot> _allDots = new List<Dot>();
+        private Dot _activePlayerDot;
+        private PlayerController playerController;
 
         public List<Dot> AllDots => _allDots;
+        public Dot ActivePlayerDot => _activePlayerDot;
 
         public Dot FindValidDot(Vector3 destinationPosition)
         {
@@ -27,8 +31,22 @@ namespace PolyGo
             return _allDots.Find(dot => dot.DotPosition == gridPosition);
         }
 
+        public Dot FindActivePlayerDot()
+        {
+            if (playerController != null && !playerController.IsMoving)
+                return FindValidDot(playerController.transform.position);
+
+            return null;
+        }
+
+        public void UpdateActivePlayerDot()
+        {
+            _activePlayerDot = FindActivePlayerDot();
+        }
+
         private void Awake()
         {
+            playerController = FindAnyObjectByType<PlayerController>();
             GetDotList();
         }
 

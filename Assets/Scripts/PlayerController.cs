@@ -22,6 +22,11 @@ namespace PolyGo.Player
             gridSystem = FindFirstObjectByType<GridSystem>();
         }
 
+        private void Start()
+        {
+            UpdateGrid();
+        }
+
         private void Move(Vector3 destinationPosition, float delay = 0.15f)
         {
             if (gridSystem != null)
@@ -43,6 +48,7 @@ namespace PolyGo.Player
         {
             transform.position = destinationPosition;
             _isMoving = false;
+            UpdateGrid();
         }
 
         public void MoveLeft()
@@ -65,6 +71,12 @@ namespace PolyGo.Player
         public void MoveBackward()
         {
             Move(transform.position + new Vector3(0, 0, -GridSystem.spacing));
+        }
+
+        private void UpdateGrid()
+        {
+            if (gridSystem != null)
+                gridSystem.UpdateActivePlayerDot();
         }
     }
 }
