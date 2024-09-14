@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace PolyGo
@@ -20,9 +21,10 @@ namespace PolyGo
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
             SetArrows();
+            MoveArrows();
         }
 
-        private void SetArrows()
+        void SetArrows()
         {
             foreach (Vector2 dir in GridSystem.directions)
             {
@@ -35,6 +37,23 @@ namespace PolyGo
 
                 arrows.Add(arrowInstance);
             }
+        }
+
+        void MoveArrow(GameObject arrow)
+        {
+            arrow.transform.DOMove
+            (
+                arrow.transform.position + arrow.transform.forward * endOffset,
+                0.5f
+            )
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InExpo);
+        }
+
+        void MoveArrows()
+        {
+            foreach (var arrow in arrows)
+                MoveArrow(arrow);
         }
     }
 }
