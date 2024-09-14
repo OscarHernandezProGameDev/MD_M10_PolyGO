@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using PolyGo.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -64,6 +65,30 @@ namespace PolyGo
             }
         }
 
+        IEnumerator EndLevelRoutine()
+        {
+            playerManager.playerInput.InputEnabled = false;
+            // Mostrar pantalla fin de nivel
+
+            while (!_hasLevelFinished)
+            {
+                // Boton de continuar
+
+                _hasLevelFinished = true;
+                yield return null;
+            }
+            RestartNivel();
+        }
+
+        private void RestartNivel()
+        {
+            DOTween.KillAll();
+
+            Scene scene = SceneManager.GetActiveScene();
+
+            SceneManager.LoadScene(scene.name);
+        }
+
         IEnumerator PlayLevelRoutine()
         {
             _isGamePlaying = true;
@@ -82,29 +107,18 @@ namespace PolyGo
                 // Revisar si pierdo
                 // GameOver=true;
 
+                _isGameOver = IsWinner();
+
                 yield return null;
             }
         }
 
-        IEnumerator EndLevelRoutine()
+        private bool IsWinner()
         {
-            playerManager.playerInput.InputEnabled = false;
-            // Mostrar pantalla fin de nivel
+            if (gridSystem.ActivePlayerDot != null && gridSystem.FinalTargetDot != null)
+                return gridSystem.ActivePlayerDot == gridSystem.FinalTargetDot;
 
-            while (!_hasLevelFinished)
-            {
-                // Boton de continuar
-                // _hasLevelFinished = true;
-                yield return null;
-            }
-            RestartNivel();
-        }
-
-        private void RestartNivel()
-        {
-            Scene scene = SceneManager.GetActiveScene();
-
-            SceneManager.LoadScene(scene.name);
+            return false;
         }
     }
 }

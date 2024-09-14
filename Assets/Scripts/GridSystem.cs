@@ -65,7 +65,7 @@ namespace PolyGo
 
         public void DrawFinalTargetDot()
         {
-            GameObject finalTargetInstance = Instantiate(finalTargetPreFab, transform.position, Quaternion.identity);
+            GameObject finalTargetInstance = Instantiate(finalTargetPreFab, _finalTargetDot.transform.position, Quaternion.identity);
 
             finalTargetInstance.transform.DOScale(Vector3.one, finalTargetTime).SetEase(finalTargetEase);
         }
