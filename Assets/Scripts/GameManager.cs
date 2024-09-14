@@ -25,6 +25,11 @@ namespace PolyGo
         public bool IsGamePaused { get => _isGamePaused; set => _isGamePaused = value; }
         public bool IsGameOver { get => _isGameOver; set => _isGameOver = value; }
 
+        public void PlayLevel()
+        {
+            _hasLevelStarted = true;
+        }
+
         private void Awake()
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
@@ -62,6 +67,7 @@ namespace PolyGo
         {
             _isGamePlaying = true;
             yield return new WaitForSeconds(delay);
+            playerManager.playerInput.InputEnabled = true;
 
             while (!_isGameOver)
             {
