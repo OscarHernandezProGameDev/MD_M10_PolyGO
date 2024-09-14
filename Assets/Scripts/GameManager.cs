@@ -68,6 +68,7 @@ namespace PolyGo
         {
             _isGamePlaying = true;
             gridSystem.InitGrid();
+            gridSystem.DrawFinalTargetDot();
             yield return new WaitForSeconds(delay);
             playerManager.playerInput.InputEnabled = true;
 

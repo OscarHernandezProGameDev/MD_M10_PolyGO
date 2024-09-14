@@ -17,6 +17,7 @@ namespace PolyGo
         [SerializeField] private Ease ease = Ease.InOutQuad;
         [SerializeField] private LayerMask blockerLayer;
         [SerializeField] private bool isInittialized;
+        [SerializeField] private bool _isFinalTarget;
 
         private Vector2 _dotPosition;
         private Transform m_Transform;
@@ -27,6 +28,8 @@ namespace PolyGo
         public Vector2 DotPosition => Tools.Utilities.Vector2Round(_dotPosition);
         public List<Dot> DotsBrothers => _dotsBrothers;
         public List<Dot> ConnectedDots => _connectedDots;
+
+        public bool IsFinalTarget { get => _isFinalTarget; set => _isFinalTarget = value; }
 
         private void Awake()
         {

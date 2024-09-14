@@ -1,3 +1,4 @@
+using DG.Tweening;
 using PolyGo.Player;
 using System;
 using System.Collections;
@@ -8,6 +9,9 @@ namespace PolyGo
 {
     public class GridSystem : MonoBehaviour
     {
+        [SerializeField] private GameObject finalTargetPreFab;
+        [SerializeField] private float finalTargetTime = 2f;
+
         public static float spacing = 2;
         public static Vector2[] directions =
         {
@@ -19,10 +23,14 @@ namespace PolyGo
 
         private List<Dot> _allDots = new List<Dot>();
         private Dot _activePlayerDot;
+        private Dot _finalTargetDot;
         private PlayerController playerController;
+        private Ease finalTargetEase = Ease.InExpo;
 
         public List<Dot> AllDots => _allDots;
         public Dot ActivePlayerDot => _activePlayerDot;
+
+        public Dot FinalTargetDot => _finalTargetDot;
 
         public void InitGrid()
         {
@@ -45,22 +53,28 @@ namespace PolyGo
             return null;
         }
 
+        public Dot FindFinalTargetDot()
+        {
+            return _allDots.Find(dot => dot.IsFinalTarget);
+        }
+
         public void UpdateActivePlayerDot()
         {
             _activePlayerDot = FindActivePlayerDot();
+        }
+
+        public void DrawFinalTargetDot()
+        {
+            GameObject finalTargetInstance = Instantiate(finalTargetPreFab, transform.position, Quaternion.identity);
+
+            finalTargetInstance.transform.DOScale(Vector3.one, finalTargetTime).SetEase(finalTargetEase);
         }
 
         private void Awake()
         {
             playerController = FindAnyObjectByType<PlayerController>();
             GetDotList();
-        }
-
-        private void GetDotList()
-        {
-            Dot[] dotsArray = FindObjectsOfType<Dot>();
-
-            _allDots.AddRange(dotsArray);
+            _finalTargetDot = FindFinalTargetDot();
         }
 
         void OnDrawGizmos()
@@ -68,6 +82,13 @@ namespace PolyGo
             Gizmos.color = new Color(0, 0, 1, 0.7f);
             if (_activePlayerDot != null)
                 Gizmos.DrawSphere(_activePlayerDot.transform.position, 1);
+        }
+
+        private void GetDotList()
+        {
+            Dot[] dotsArray = FindObjectsOfType<Dot>();
+
+            _allDots.AddRange(dotsArray);
         }
     }
 }
