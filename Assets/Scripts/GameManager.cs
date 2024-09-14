@@ -9,6 +9,8 @@ namespace PolyGo
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private float delay;
+
         private GridSystem gridSystem;
         private PlayerManager playerManager;
 
@@ -17,7 +19,6 @@ namespace PolyGo
         private bool _isGamePlaying;
         private bool _isGamePaused;
         private bool _isGameOver;
-        private float delay;
 
         public bool HasLevelStarted { get => _hasLevelStarted; set => _hasLevelStarted = value; }
         public bool HasLevelFinished { get => _hasLevelFinished; set => _hasLevelFinished = value; }
@@ -66,6 +67,7 @@ namespace PolyGo
         IEnumerator PlayLevelRoutine()
         {
             _isGamePlaying = true;
+            gridSystem.InitGrid();
             yield return new WaitForSeconds(delay);
             playerManager.playerInput.InputEnabled = true;
 
