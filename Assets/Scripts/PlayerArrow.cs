@@ -16,15 +16,7 @@ namespace PolyGo
         public float startOffset = 0.5f;
         public float endOffset = 1f;
 
-
-        void Awake()
-        {
-            gridSystem = FindFirstObjectByType<GridSystem>();
-            SetArrows();
-            MoveArrows();
-        }
-
-        void SetArrows()
+        public void SetArrows()
         {
             foreach (Vector2 dir in GridSystem.directions)
             {
@@ -37,10 +29,50 @@ namespace PolyGo
 
                 arrows.Add(arrowInstance);
             }
+
+            ShowActiveArros();
+            MoveArrows();
+        }
+
+        public void ShowActiveArros()
+        {
+            if (gridSystem.ActivePlayerDot == null)
+                return;
+
+            for (int i = 0; i < GridSystem.directions.Length; i++)
+            {
+                Dot brother = gridSystem.ActivePlayerDot.FindDotBrothersAt(GridSystem.directions[i]);
+                bool activeState = brother != null && brother == gridSystem.ActivePlayerDot.ConnectedDots.Contains(brother);
+
+                arrows[i].SetActive(activeState);
+            }
+
+            MoveArrows();
+        }
+
+        public void StopArrowsMovement()
+        {
+            foreach (var arrow in arrows)
+            {
+                DOTween.Kill(arrow.transform);
+                arrow.SetActive(false);
+            }
+        }
+
+        void Awake()
+        {
+            gridSystem = FindFirstObjectByType<GridSystem>();
+        }
+
+        void MoveArrows()
+        {
+            foreach (var arrow in arrows)
+                MoveArrow(arrow);
         }
 
         void MoveArrow(GameObject arrow)
         {
+            arrow.transform.position = transform.position + arrow.transform.forward * startOffset;
             arrow.transform.DOMove
             (
                 arrow.transform.position + arrow.transform.forward * endOffset,
@@ -48,12 +80,6 @@ namespace PolyGo
             )
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InExpo);
-        }
-
-        void MoveArrows()
-        {
-            foreach (var arrow in arrows)
-                MoveArrow(arrow);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace PolyGo
 
         private GridSystem gridSystem;
         private PlayerManager playerManager;
+        private PlayerArrow playerArrow;
 
         private bool _hasLevelStarted;
         private bool _hasLevelFinished;
@@ -36,6 +37,7 @@ namespace PolyGo
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
             playerManager = FindFirstObjectByType<PlayerManager>();
+            playerArrow = GameObject.Find("PlayerArrow").GetComponent<PlayerArrow>();
         }
 
         private void Start()
@@ -96,6 +98,7 @@ namespace PolyGo
             gridSystem.DrawFinalTargetDot();
             yield return new WaitForSeconds(delay);
             playerManager.playerInput.InputEnabled = true;
+            playerArrow.SetArrows();
 
             while (!_isGameOver)
             {

@@ -31,6 +31,16 @@ namespace PolyGo
 
         public bool IsFinalTarget { get => _isFinalTarget; set => _isFinalTarget = value; }
 
+        public Dot FindDotBrothersAt(List<Dot> allDots, Vector2 direction)
+        {
+            Vector2 dotPostion = DotPosition + direction;
+            Dot dotBrother = allDots.Find(db => db.DotPosition == dotPostion);
+
+            return dotBrother;
+        }
+
+        public Dot FindDotBrothersAt(Vector2 direction) => FindDotBrothersAt(_dotsBrothers, direction);
+
         private void Awake()
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
@@ -59,8 +69,7 @@ namespace PolyGo
 
             foreach (var direction in GridSystem.directions)
             {
-                Vector2 dotPostion = DotPosition + direction;
-                Dot dotBrother = allDots.Find(db => db.DotPosition == dotPostion);
+                Dot dotBrother = FindDotBrothersAt(allDots, direction);
 
                 if (dotBrother != null && !result.Contains(dotBrother))
                     result.Add(dotBrother);
