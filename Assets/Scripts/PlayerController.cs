@@ -14,17 +14,19 @@ namespace PolyGo.Player
         [SerializeField] private bool _isMoving;
 
         private GridSystem gridSystem;
+        private PlayerArrow playerArrow;
 
         public bool IsMoving { get => _isMoving; set => _isMoving = value; }
 
         void Awake()
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
+            playerArrow = GameObject.Find("PlayerArrow").GetComponent<PlayerArrow>();
         }
 
         private void Start()
         {
-            UpdateGrid();            
+            UpdateGrid();
         }
 
         private void Move(Vector3 destinationPosition, float delay = 0.15f)
@@ -35,6 +37,7 @@ namespace PolyGo.Player
 
                 if (dotDestination != null && gridSystem.ActivePlayerDot.ConnectedDots.Contains(dotDestination))
                 {
+                    playerArrow.StopArrowsMovement();
                     _isMoving = true;
                     destination = destinationPosition;
                     transform.DOMove(destinationPosition, moveSpeed)
@@ -50,6 +53,7 @@ namespace PolyGo.Player
             transform.position = destinationPosition;
             _isMoving = false;
             UpdateGrid();
+            playerArrow.ShowActiveArrows();
         }
 
         public void MoveLeft()
