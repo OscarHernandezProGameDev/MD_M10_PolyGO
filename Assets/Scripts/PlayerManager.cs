@@ -5,16 +5,16 @@ using UnityEngine;
 namespace PolyGo.Player
 {
     [RequireComponent(typeof(PlayerController))]
-    [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(GatherInput))]
     public class PlayerManager : MonoBehaviour
     {
         public PlayerController playerController;
-        public PlayerInput playerInput;
+        public GatherInput playerInput;
 
         void Awake()
         {
             playerController = GetComponent<PlayerController>();
-            playerInput = GetComponent<PlayerInput>();
+            playerInput = GetComponent<GatherInput>();
             playerInput.InputEnabled = true;
         }
 
