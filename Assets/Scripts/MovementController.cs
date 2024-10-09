@@ -70,9 +70,9 @@ namespace PolyGo
                             .SetEase(ease)
                             .OnComplete(() => OnCompleteMove(destinationPosition));
                     }
+                    else
+                        Debug.Log($"Movement controller: {currentDot.name} not connected {dotDestination.name}");
                 }
-                else
-                    Debug.Log($"Movement controller: {currentDot.name} not connected {dotDestination.name}");
             }
         }
 
@@ -89,6 +89,11 @@ namespace PolyGo
         {
             if (gridSystem != null)
                 currentDot = gridSystem.FindValidDot(transform.position);
+        }
+
+        private void FaceRotation()
+        {
+            
         }
     }
 }

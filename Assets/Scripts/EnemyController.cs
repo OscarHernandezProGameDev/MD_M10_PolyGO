@@ -4,18 +4,31 @@ using UnityEngine;
 
 namespace PolyGo
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MovementController
     {
-        // Start is called before the first frame update
-        void Start()
+        protected override void Awake()
         {
-        
+            base.Awake();
         }
 
-        // Update is called once per frame
-        void Update()
+        protected override void Start()
         {
-        
+            base.Start();
+            StartCoroutine(TestMoveRoutine());
+        }
+
+        private IEnumerator TestMoveRoutine()
+        {
+            yield return new WaitForSeconds(5f);
+            MoveForward();
+            yield return new WaitForSeconds(2f);
+            MoveRight();
+            yield return new WaitForSeconds(2f);
+            MoveLeft();
+            yield return new WaitForSeconds(2f);
+            MoveBackward();
+            yield return new WaitForSeconds(2f);
+            MoveBackward();
         }
     }
 }
