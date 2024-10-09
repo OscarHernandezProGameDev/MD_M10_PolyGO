@@ -30,11 +30,11 @@ namespace PolyGo
                 arrows.Add(arrowInstance);
             }
 
-            ShowActiveArros();
+            ShowActiveArrows();
             MoveArrows();
         }
 
-        public void ShowActiveArros()
+        public void ShowActiveArrows()
         {
             if (gridSystem.ActivePlayerDot == null)
                 return;
