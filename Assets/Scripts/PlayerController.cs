@@ -6,76 +6,33 @@ using UnityEngine;
 
 namespace PolyGo.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MovementController
     {
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private Ease ease;
-        [SerializeField] private Vector3 destination;
-        [SerializeField] private bool _isMoving;
-
-        private GridSystem gridSystem;
         private PlayerArrow playerArrow;
 
-        public bool IsMoving { get => _isMoving; set => _isMoving = value; }
-
-        void Awake()
+        protected override void Awake()
         {
-            gridSystem = FindFirstObjectByType<GridSystem>();
+            base.Awake();
             playerArrow = GameObject.Find("PlayerArrow").GetComponent<PlayerArrow>();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             UpdateGrid();
         }
 
-        private void Move(Vector3 destinationPosition, float delay = 0.15f)
+        protected override void OnBeforeMove()
         {
-            if (gridSystem != null)
-            {
-                Dot dotDestination = gridSystem.FindValidDot(destinationPosition);
-
-                if (dotDestination != null && gridSystem.ActivePlayerDot.ConnectedDots.Contains(dotDestination))
-                {
-                    playerArrow.StopArrowsMovement();
-                    _isMoving = true;
-                    destination = destinationPosition;
-                    transform.DOMove(destinationPosition, moveSpeed)
-                        .SetDelay(delay)
-                        .SetEase(ease)
-                        .OnComplete(() => OnCompleteMove(destinationPosition));
-                }
-            }
+            base.OnBeforeMove();
+            playerArrow.StopArrowsMovement();
         }
 
-        private void OnCompleteMove(Vector3 destinationPosition)
+        override protected void OnCompleteMove(Vector3 destinationPosition)
         {
-            transform.position = destinationPosition;
-            _isMoving = false;
+            base.OnCompleteMove(destinationPosition);
             UpdateGrid();
             playerArrow.ShowActiveArrows();
-        }
-
-        public void MoveLeft()
-        {
-            Vector3 newPosition = transform.position + new Vector3(-GridSystem.spacing, 0, 0);
-
-            Move(newPosition);
-        }
-
-        public void MoveRight()
-        {
-            Move(transform.position + new Vector3(GridSystem.spacing, 0, 0));
-        }
-
-        public void MoveForward()
-        {
-            Move(transform.position + new Vector3(0, 0, GridSystem.spacing));
-        }
-
-        public void MoveBackward()
-        {
-            Move(transform.position + new Vector3(0, 0, -GridSystem.spacing));
         }
 
         private void UpdateGrid()
