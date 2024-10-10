@@ -8,11 +8,12 @@ namespace PolyGo
     public class MovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
-        [SerializeField] private float rotationTime = 0.5f;
-        [SerializeField] private Ease ease;
-        [SerializeField] private Vector3 destination;
+        [SerializeField] private protected Ease ease;
+        [SerializeField] private protected Vector3 destination;
         [SerializeField] private bool _isMoving;
-        [SerializeField] private bool faceDestination = false;
+        [SerializeField] private protected bool faceDestination = false;
+
+        private Sequence sequence;
 
         private protected GridSystem gridSystem;
         protected Dot currentDot;
@@ -69,12 +70,15 @@ namespace PolyGo
                         _isMoving = true;
                         destination = destinationPosition;
                         if (faceDestination)
-                            RotateToDestination();
+                            sequence.Append(RotateToDestination());
 
-                        transform.DOMove(destinationPosition, moveSpeed)
+                        sequence.Append
+                        (
+                            transform.DOMove(destinationPosition, moveSpeed)
                             .SetDelay(delay)
                             .SetEase(ease)
-                            .OnComplete(() => OnCompleteMove(destinationPosition));
+                            .OnComplete(() => OnCompleteMove(destinationPosition))
+                        );
                     }
                     else
                         Debug.Log($"Movement controller: {currentDot.name} not connected {dotDestination.name}");
@@ -97,13 +101,6 @@ namespace PolyGo
                 currentDot = gridSystem.FindValidDot(transform.position);
         }
 
-        private void RotateToDestination()
-        {
-            Vector3 relativeDirection = destination - transform.position;
-            Quaternion newRotation = Quaternion.LookRotation(relativeDirection);
-            float newY = newRotation.eulerAngles.y;
-
-            transform.DORotate(new Vector3(0, newY, 0), rotationTime, RotateMode.FastBeyond360).SetEase(ease);
-        }
+        protected virtual Tween RotateToDestination() => null;
     }
 }
