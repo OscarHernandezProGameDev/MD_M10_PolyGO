@@ -4,18 +4,20 @@ using UnityEngine;
 
 namespace PolyGo
 {
+    [RequireComponent(typeof(EnemyController))]
+    [RequireComponent(typeof(EnemySensor))]
+
     public class EnemyManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        private EnemyController enemyController;
+        private EnemySensor enemySensor;
+        private GridSystem gridSystem;
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
         {
-        
+            enemyController = GetComponent<EnemyController>();
+            enemySensor = GetComponent<EnemySensor>();
+            gridSystem = FindFirstObjectByType<GridSystem>();
         }
     }
 }
