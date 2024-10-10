@@ -8,9 +8,11 @@ namespace PolyGo
     public class MovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
+        [SerializeField] private float rotationTime = 0.5f;
         [SerializeField] private Ease ease;
         [SerializeField] private Vector3 destination;
         [SerializeField] private bool _isMoving;
+        [SerializeField] private bool faceDestination = false;
 
         private protected GridSystem gridSystem;
         protected Dot currentDot;
@@ -63,8 +65,12 @@ namespace PolyGo
                     if (currentDot.ConnectedDots.Contains(dotDestination))
                     {
                         OnBeforeMove();
+
                         _isMoving = true;
                         destination = destinationPosition;
+                        if (faceDestination)
+                            RotateToDestination();
+
                         transform.DOMove(destinationPosition, moveSpeed)
                             .SetDelay(delay)
                             .SetEase(ease)
@@ -91,9 +97,13 @@ namespace PolyGo
                 currentDot = gridSystem.FindValidDot(transform.position);
         }
 
-        private void FaceRotation()
+        private void RotateToDestination()
         {
-            
+            Vector3 relativeDirection = destination - transform.position;
+            Quaternion newRotation = Quaternion.LookRotation(relativeDirection);
+            float newY = newRotation.eulerAngles.y;
+
+            transform.DORotate(new Vector3(0, newY, 0), rotationTime, RotateMode.FastBeyond360).SetEase(ease);
         }
     }
 }
