@@ -7,14 +7,15 @@ namespace PolyGo
     [RequireComponent(typeof(EnemyController))]
     [RequireComponent(typeof(EnemySensor))]
 
-    public class EnemyManager : MonoBehaviour
+    public class EnemyManager : TurnManager
     {
         private EnemyController enemyController;
         private EnemySensor enemySensor;
         private GridSystem gridSystem;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             enemyController = GetComponent<EnemyController>();
             enemySensor = GetComponent<EnemySensor>();
             gridSystem = FindFirstObjectByType<GridSystem>();

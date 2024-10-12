@@ -6,19 +6,19 @@ namespace PolyGo.Player
 {
     [RequireComponent(typeof(PlayerController))]
     [RequireComponent(typeof(GatherInput))]
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : TurnManager
     {
         public PlayerController playerController;
         public GatherInput playerInput;
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerController = GetComponent<PlayerController>();
             playerInput = GetComponent<GatherInput>();
             playerInput.InputEnabled = true;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (playerController.IsMoving)

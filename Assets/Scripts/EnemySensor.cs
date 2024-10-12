@@ -31,10 +31,11 @@ namespace PolyGo
             gridSystem = FindFirstObjectByType<GridSystem>();
         }
 
-        // Update is called once per frame
+        /*
         void Update()
         {
             UpdateSensor();
         }
+        */
     }
 }
