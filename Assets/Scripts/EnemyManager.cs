@@ -26,12 +26,16 @@ namespace PolyGo
 
         private IEnumerator PlayTurnRoutine()
         {
+            // Detect Player
             enemySensor.UpdateSensor();
-            // Attack Player
-            // Movement > EnemyController => some move method
-            // Wait
 
-            yield return new WaitForSeconds(2f);
+            // Attack Player
+
+            // Wait
+            yield return new WaitForSeconds(0.5f);
+
+            // Movement
+            enemyController.MoveOneTurn();
         }
     }
 }
