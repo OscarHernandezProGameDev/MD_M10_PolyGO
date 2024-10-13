@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,12 @@ namespace PolyGo
     public class EnemyController : MovementController
     {
         [SerializeField] private float rotationTime = 0.5f;
+        public float standTime = 1f;
+
+        public void MoveOneTurn()
+        {
+            Stand();
+        }
 
         protected override void Awake()
         {
@@ -15,11 +22,11 @@ namespace PolyGo
             faceDestination = true;
         }
 
-        protected override void Start()
-        {
-            base.Start();
-            //StartCoroutine(TestMoveRoutine());
-        }
+        //protected override void Start()
+        //{
+        //    base.Start();
+        //    //StartCoroutine(TestMoveRoutine());
+        //}
 
         protected override Tween RotateToDestination()
         {
@@ -30,18 +37,12 @@ namespace PolyGo
             return transform.DORotate(new Vector3(0, newY, 0), rotationTime, RotateMode.FastBeyond360).SetEase(ease);
         }
 
-        private IEnumerator TestMoveRoutine()
+        private void Stand() => StartCoroutine(StandRoutine());
+
+        private IEnumerator StandRoutine()
         {
-            yield return new WaitForSeconds(5f);
-            MoveForward();
-            yield return new WaitForSeconds(2f);
-            MoveRight();
-            yield return new WaitForSeconds(2f);
-            MoveLeft();
-            yield return new WaitForSeconds(2f);
-            MoveBackward();
-            yield return new WaitForSeconds(2f);
-            MoveBackward();
+            yield return new WaitForSeconds(standTime);
+            FinishMovementEvent.Invoke();
         }
     }
 }

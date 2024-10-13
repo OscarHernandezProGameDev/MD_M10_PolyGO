@@ -14,9 +14,9 @@ namespace PolyGo
 
         public void TurnFinish()
         {
-            TurnCompleted = true;
+            _turnCompleted = true;
 
-            // Update GameManager
+            gameManager?.UpdateTurn();
         }
 
         protected virtual void Awake()

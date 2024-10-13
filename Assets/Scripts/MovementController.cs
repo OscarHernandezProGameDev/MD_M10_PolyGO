@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PolyGo
 {
@@ -17,6 +18,8 @@ namespace PolyGo
 
         private protected GridSystem gridSystem;
         protected Dot currentDot;
+
+        public UnityEvent FinishMovementEvent;
 
         public bool IsMoving { get => _isMoving; set => _isMoving = value; }
 

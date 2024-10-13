@@ -33,6 +33,7 @@ namespace PolyGo.Player
             base.OnCompleteMove(destinationPosition);
             UpdateGrid();
             playerArrow.ShowActiveArrows();
+            FinishMovementEvent.Invoke();
         }
 
         private void UpdateGrid()
