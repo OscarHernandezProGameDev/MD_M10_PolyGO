@@ -8,12 +8,23 @@ using UnityEngine.SceneManagement;
 
 namespace PolyGo
 {
+    [Serializable]
+    public enum Turn
+    {
+        Player,
+        Enemy
+    }
+
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private float delay;
 
         private GridSystem gridSystem;
+
         private PlayerManager playerManager;
+        private List<EnemyManager> enemyManagers;
+        private Turn _currentTurn = Turn.Player;
+
         private PlayerArrow playerArrow;
 
         private bool _hasLevelStarted;
@@ -27,6 +38,8 @@ namespace PolyGo
         public bool IsGamePlaying { get => _isGamePlaying; set => _isGamePlaying = value; }
         public bool IsGamePaused { get => _isGamePaused; set => _isGamePaused = value; }
         public bool IsGameOver { get => _isGameOver; set => _isGameOver = value; }
+
+        public Turn CurrentTurn => _currentTurn;
 
         public void PlayLevel()
         {
