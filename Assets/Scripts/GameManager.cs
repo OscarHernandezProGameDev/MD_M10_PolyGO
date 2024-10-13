@@ -156,12 +156,20 @@ namespace PolyGo
 
         private void PlayPlayerTurn()
         {
-
+            _currentTurn = Turn.Player;
+            playerManager.TurnCompleted = false;
+            // allow Player to move
         }
 
         private void PlayEnemyTurn()
         {
-
+            _currentTurn = Turn.Enemy;
+            foreach (var enemyManager in enemyManagers)
+                if (enemyManager != null)
+                {
+                    enemyManager.TurnCompleted = false;
+                    enemyManager.PlayTurn();
+                }
         }
 
         private bool IsEnemyTurnComplete()

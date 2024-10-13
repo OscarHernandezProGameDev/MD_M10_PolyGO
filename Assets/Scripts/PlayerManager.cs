@@ -21,7 +21,7 @@ namespace PolyGo.Player
 
         void Update()
         {
-            if (playerController.IsMoving)
+            if (playerController.IsMoving || gameManager.CurrentTurn != Turn.Player)
                 return;
 
             playerInput.GetKeyInput();
