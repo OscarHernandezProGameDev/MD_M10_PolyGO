@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using PolyGo.Player;
 using UnityEngine;
@@ -46,11 +47,27 @@ namespace PolyGo
             _hasLevelStarted = true;
         }
 
+        public void UpdateTurn()
+        {
+            switch (_currentTurn)
+            {
+                case Turn.Player:
+                    if (playerManager.TurnCompleted)
+                        PlayEnemyTurn();
+                    break;
+                case Turn.Enemy:
+                    if (IsEnemyTurnComplete())
+                        PlayPlayerTurn();
+                    break;
+            }
+        }
+
         private void Awake()
         {
             gridSystem = FindFirstObjectByType<GridSystem>();
             playerManager = FindFirstObjectByType<PlayerManager>();
             playerArrow = GameObject.Find("PlayerArrow").GetComponent<PlayerArrow>();
+            enemyManagers = FindObjectsOfType<EnemyManager>().ToList();
         }
 
         private void Start()
@@ -135,6 +152,25 @@ namespace PolyGo
                 return gridSystem.ActivePlayerDot == gridSystem.FinalTargetDot;
 
             return false;
+        }
+
+        private void PlayPlayerTurn()
+        {
+
+        }
+
+        private void PlayEnemyTurn()
+        {
+
+        }
+
+        private bool IsEnemyTurnComplete()
+        {
+            foreach (var enemyManager in enemyManagers)
+                if (!enemyManager.TurnCompleted)
+                    return false;
+
+            return true;
         }
     }
 }

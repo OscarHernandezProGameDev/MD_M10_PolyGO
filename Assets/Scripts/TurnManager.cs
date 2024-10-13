@@ -8,9 +8,9 @@ namespace PolyGo
     public class TurnManager : MonoBehaviour
     {
         private protected GameManager gameManager;
-        private bool _turnCompleted = false;
+        private protected bool _turnCompleted = false;
 
-        private protected bool TurnCompleted { get => _turnCompleted; set => _turnCompleted = value; }
+        public bool TurnCompleted { get => _turnCompleted; set => _turnCompleted = value; }
 
         public void TurnFinish()
         {
