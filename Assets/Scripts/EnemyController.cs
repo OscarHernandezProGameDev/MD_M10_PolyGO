@@ -69,10 +69,23 @@ namespace PolyGo
             Vector2 dotPosition = currentDot.DotPosition;
             Vector3 startPos = new Vector3(dotPosition.x, 0, dotPosition.y);
             Vector3 newPos = startPos + transform.TransformVector(directionToMove);
+            Vector3 nextPos = startPos + transform.TransformVector(directionToMove * 2);
 
             Move(newPos, 0f);
 
             yield return new WaitWhile(() => IsMoving);
+
+            if (gridSystem != null)
+            {
+                Dot newDestinationDot = gridSystem.FindValidDot(newPos);
+                Dot nextDestinationDot = gridSystem.FindValidDot(nextPos);
+
+                if (nextDestinationDot == null || !newDestinationDot.ConnectedDots.Contains(nextDestinationDot))
+                {
+                    destination = startPos;
+                    RotateToDestination();
+                }
+            }
 
             FinishMovementEvent.Invoke();
         }
