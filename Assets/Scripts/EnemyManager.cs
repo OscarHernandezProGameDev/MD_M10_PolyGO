@@ -32,7 +32,7 @@ namespace PolyGo
             // Attack Player
 
             // Wait
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0f);
 
             // Movement
             enemyController.MoveOneTurn();

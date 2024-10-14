@@ -6,14 +6,31 @@ using UnityEngine;
 
 namespace PolyGo
 {
+    public enum MovementType
+    {
+        Stationary,
+        Patrol
+    }
+
     public class EnemyController : MovementController
     {
         [SerializeField] private float rotationTime = 0.5f;
+
+        public Vector3 directionToMove = new Vector3(0, 0, GridSystem.spacing);
+        public MovementType movementType = MovementType.Stationary;
         public float standTime = 1f;
 
         public void MoveOneTurn()
         {
-            Stand();
+            switch (movementType)
+            {
+                case MovementType.Stationary:
+                    Stand();
+                    break;
+                case MovementType.Patrol:
+                    Patrol();
+                    break;
+            }
         }
 
         protected override void Awake()
@@ -42,6 +59,21 @@ namespace PolyGo
         private IEnumerator StandRoutine()
         {
             yield return new WaitForSeconds(standTime);
+            FinishMovementEvent.Invoke();
+        }
+
+        private void Patrol() => StartCoroutine(PatrolRoutine());
+
+        private IEnumerator PatrolRoutine()
+        {
+            Vector2 dotPosition = currentDot.DotPosition;
+            Vector3 startPos = new Vector3(dotPosition.x, 0, dotPosition.y);
+            Vector3 newPos = startPos + transform.TransformVector(directionToMove);
+
+            Move(newPos, 0f);
+
+            yield return new WaitWhile(() => IsMoving);
+
             FinishMovementEvent.Invoke();
         }
     }
