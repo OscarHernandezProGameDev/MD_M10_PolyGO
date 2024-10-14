@@ -8,18 +8,20 @@ namespace PolyGo
 {
     public class MovementController : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private protected Ease ease;
         [SerializeField] private protected Vector3 destination;
-        [SerializeField] private bool _isMoving;
         [SerializeField] private protected bool faceDestination = false;
+        [SerializeField] private protected Ease ease;
+        [SerializeField] private bool _isMoving;
+
+        public UnityEvent FinishMovementEvent;
+        
+        [SerializeField] private float moveSpeed;
 
         private Sequence sequence;
 
         private protected GridSystem gridSystem;
         protected Dot currentDot;
 
-        public UnityEvent FinishMovementEvent;
 
         public bool IsMoving { get => _isMoving; set => _isMoving = value; }
 

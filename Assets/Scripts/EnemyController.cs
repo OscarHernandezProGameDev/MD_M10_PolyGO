@@ -9,7 +9,8 @@ namespace PolyGo
     public enum MovementType
     {
         Stationary,
-        Patrol
+        Patrol,
+        Sentry
     }
 
     public class EnemyController : MovementController
@@ -29,6 +30,9 @@ namespace PolyGo
                     break;
                 case MovementType.Patrol:
                     Patrol();
+                    break;
+                case MovementType.Sentry:
+                    Sentry();
                     break;
             }
         }
@@ -84,8 +88,21 @@ namespace PolyGo
                 {
                     destination = startPos;
                     RotateToDestination();
+                    yield return new WaitForSeconds(rotationTime);
                 }
             }
+
+            FinishMovementEvent.Invoke();
+        }
+
+        private void Sentry() => StartCoroutine(SentryRoutine());
+
+        private IEnumerator SentryRoutine()
+        {
+            Vector3 localForward = new Vector3(0, 0, GridSystem.spacing);
+            destination = transform.TransformVector(localForward * -1) + transform.position;
+            RotateToDestination();
+            yield return new WaitForSeconds(rotationTime);
 
             FinishMovementEvent.Invoke();
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8185356616687543559}
   - component: {fileID: 1628968368407465343}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyStationary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
         m_CallState: 2
   rotationTime: 0.4
   directionToMove: {x: 0, y: 0, z: 2}
-  movementType: 1
+  movementType: 0
   standTime: 1
 --- !u!114 &8185356616687543559
 MonoBehaviour:
