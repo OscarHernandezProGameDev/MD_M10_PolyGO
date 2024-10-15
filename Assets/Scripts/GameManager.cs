@@ -47,6 +47,8 @@ namespace PolyGo
             _hasLevelStarted = true;
         }
 
+        public void LoseLevel() => StartCoroutine(LoseLevelRoutine());
+
         public void UpdateTurn()
         {
             switch (_currentTurn)
@@ -105,7 +107,7 @@ namespace PolyGo
             while (!_hasLevelFinished)
             {
                 // Boton de continuar
-
+                Debug.Log("YOU WIN!!");
                 _hasLevelFinished = true;
                 yield return null;
             }
@@ -140,10 +142,20 @@ namespace PolyGo
                 // Revisar si pierdo
                 // GameOver=true;
 
-                _isGameOver = IsWinner();
-
                 yield return null;
+                _isGameOver = IsWinner();
             }
+        }
+
+        IEnumerator LoseLevelRoutine()
+        {
+            IsGameOver = true;
+
+            yield return new WaitForSeconds(2f);
+
+            Debug.Log("YOU LOSE!!");
+
+            RestartNivel();
         }
 
         private bool IsWinner()

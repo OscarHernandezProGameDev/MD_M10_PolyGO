@@ -26,16 +26,26 @@ namespace PolyGo
 
         private IEnumerator PlayTurnRoutine()
         {
+            if (gameManager == null)
+                yield break;
+
             // Detect Player
             enemySensor.UpdateSensor();
-
-            // Attack Player
 
             // Wait
             yield return new WaitForSeconds(0f);
 
-            // Movement
-            enemyController.MoveOneTurn();
+            if (enemySensor.FoundPlayer)
+            {
+                // Attack Player
+                // Notify GameManager to lose level
+                gameManager.LoseLevel();
+            }
+            else
+            {
+                // Movement
+                enemyController.MoveOneTurn();
+            }
         }
     }
 }
