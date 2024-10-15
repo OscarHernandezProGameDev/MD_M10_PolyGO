@@ -26,14 +26,15 @@ namespace PolyGo
 
         private IEnumerator PlayTurnRoutine()
         {
-            if (gameManager == null)
+            if (gameManager == null || gameManager.IsGameOver)
                 yield break;
 
             // Detect Player
             enemySensor.UpdateSensor();
 
             // Wait
-            yield return new WaitForSeconds(0f);
+            // lo comentamos para que no se llame a los otros enemigos
+            //yield return new WaitForSeconds(0f);
 
             if (enemySensor.FoundPlayer)
             {
@@ -46,6 +47,8 @@ namespace PolyGo
                 // Movement
                 enemyController.MoveOneTurn();
             }
+
+            yield return null;
         }
     }
 }
