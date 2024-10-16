@@ -27,10 +27,18 @@ namespace PolyGo
         private PlayerController playerController;
         private Ease finalTargetEase = Ease.InExpo;
 
+        private int _currentCapturePosition = 0;
+
+        public List<Transform> capturePositions;
+        public float capturePositionIconSize = 0.5f;
+        public Color capturePositionIconColor = Color.blue;
+
         public List<Dot> AllDots => _allDots;
         public Dot ActivePlayerDot => _activePlayerDot;
 
         public Dot FinalTargetDot => _finalTargetDot;
+
+        public int CurrentCapturePosition { get => _currentCapturePosition; set => _currentCapturePosition = value; }
 
         public void InitGrid()
         {
@@ -98,6 +106,10 @@ namespace PolyGo
             Gizmos.color = new Color(0, 0, 1, 0.7f);
             if (_activePlayerDot != null)
                 Gizmos.DrawSphere(_activePlayerDot.transform.position, 1);
+
+            Gizmos.color = capturePositionIconColor;
+            foreach (Transform capturePosition in capturePositions)
+                Gizmos.DrawCube(capturePosition.position, Vector3.one * capturePositionIconSize);
         }
 
         private void GetDotList()
