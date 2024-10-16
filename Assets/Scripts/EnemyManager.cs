@@ -14,7 +14,28 @@ namespace PolyGo
         private EnemySensor enemySensor;
         private GridSystem gridSystem;
 
-        public void PlayTurn() => StartCoroutine(PlayTurnRoutine());
+        private bool _isDead = false;
+
+        public bool IsDead { get => _isDead; set => _isDead = value; }
+
+        public void PlayTurn()
+        {
+            if (_isDead)
+            {
+                TurnFinish();
+
+                return;
+            }
+            StartCoroutine(PlayTurnRoutine());
+        }
+
+        public void Die()
+        {
+            if (_isDead)
+                return;
+
+            _isDead = true;
+        }
 
         protected override void Awake()
         {
