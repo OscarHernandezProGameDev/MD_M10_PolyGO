@@ -70,7 +70,7 @@ namespace PolyGo
 
         private IEnumerator PatrolRoutine()
         {
-            Vector2 dotPosition = currentDot.DotPosition;
+            Vector2 dotPosition = _currentDot.DotPosition;
             Vector3 startPos = new Vector3(dotPosition.x, 0, dotPosition.y);
             Vector3 newPos = startPos + transform.TransformVector(directionToMove);
             Vector3 nextPos = startPos + transform.TransformVector(directionToMove * 2);

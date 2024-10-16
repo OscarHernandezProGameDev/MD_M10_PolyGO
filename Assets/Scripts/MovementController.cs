@@ -14,16 +14,17 @@ namespace PolyGo
         [SerializeField] private bool _isMoving;
 
         public UnityEvent FinishMovementEvent;
-        
+
         [SerializeField] private float moveSpeed;
 
         private Sequence sequence;
 
         private protected GridSystem gridSystem;
-        protected Dot currentDot;
+        protected Dot _currentDot;
 
 
         public bool IsMoving { get => _isMoving; set => _isMoving = value; }
+        public Dot CurrentDot => _currentDot;
 
         public void MoveLeft()
         {
@@ -66,9 +67,9 @@ namespace PolyGo
             {
                 Dot dotDestination = gridSystem.FindValidDot(destinationPosition);
 
-                if (dotDestination != null && currentDot != null)
+                if (dotDestination != null && _currentDot != null)
                 {
-                    if (currentDot.ConnectedDots.Contains(dotDestination))
+                    if (_currentDot.ConnectedDots.Contains(dotDestination))
                     {
                         OnBeforeMove();
 
@@ -86,7 +87,7 @@ namespace PolyGo
                         );
                     }
                     else
-                        Debug.Log($"Movement controller: {currentDot.name} not connected {dotDestination.name}");
+                        Debug.Log($"Movement controller: {_currentDot.name} not connected {dotDestination.name}");
                 }
             }
         }
@@ -103,7 +104,7 @@ namespace PolyGo
         protected void UpdateCurrentDot()
         {
             if (gridSystem != null)
-                currentDot = gridSystem.FindValidDot(transform.position);
+                _currentDot = gridSystem.FindValidDot(transform.position);
         }
 
         protected virtual Tween RotateToDestination() => null;

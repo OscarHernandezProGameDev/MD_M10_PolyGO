@@ -53,6 +53,22 @@ namespace PolyGo
             return null;
         }
 
+        public List<EnemyManager> FindAllEnemyAt(Dot dot)
+        {
+            var foundEnemies = new List<EnemyManager>();
+            var enemies = FindObjectsOfType<EnemyManager>();
+
+            foreach (var enemy in enemies)
+            {
+                var controller = enemy.GetComponent<EnemyController>();
+
+                if (controller.CurrentDot == dot)
+                    foundEnemies.Add(enemy);
+            }
+
+            return foundEnemies;
+        }
+
         public Dot FindFinalTargetDot()
         {
             return _allDots.Find(dot => dot.IsFinalTarget);
