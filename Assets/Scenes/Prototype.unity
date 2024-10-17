@@ -705,10 +705,10 @@ MonoBehaviour:
     type: 3}
   finalTargetTime: 2
   capturePositions:
-  - {fileID: 512662860}
-  - {fileID: 1632362198}
-  - {fileID: 904975283}
   - {fileID: 506882206}
+  - {fileID: 904975283}
+  - {fileID: 1632362198}
+  - {fileID: 512662860}
   capturePositionIconSize: 0.7
   capturePositionIconColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!4 &158296562
@@ -6039,9 +6039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23e94bfee13902468d89a8698486b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offscreenOffset: {x: 0, y: 10, z: 0}
+  offscreenOffset: {x: 0, y: 20, z: 0}
   deathDelay: 4
-  offscreenDelay: 1
+  offscreenDelay: 0.5
   ease: 16
   moveTime: 0.5
   delayTime: 0

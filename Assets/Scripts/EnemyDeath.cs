@@ -31,11 +31,6 @@ namespace PolyGo
             gridSystem = FindFirstObjectByType<GridSystem>();
         }
 
-        private void Start()
-        {
-            Die();
-        }
-
         IEnumerator DeathRoutine()
         {
             yield return new WaitForSeconds(deathDelay);
