@@ -14,14 +14,17 @@ namespace PolyGo
 
         public bool FoundPlayer => _foundPlayer;
 
-        public void UpdateSensor()
+        public void UpdateSensor(Dot enemyDot)
         {
             Vector3 worldSpacePositionToSearch = transform.TransformDirection(directionToSearch) + transform.position;
 
             if (gridSystem != null)
             {
                 dotToSearch = gridSystem.FindValidDot(worldSpacePositionToSearch);
-                if (dotToSearch == gridSystem.ActivePlayerDot)
+
+                if (!enemyDot.ConnectedDots.Contains(dotToSearch))
+                    _foundPlayer = false;
+                else if (dotToSearch == gridSystem.ActivePlayerDot)
                     _foundPlayer = true;
             }
         }

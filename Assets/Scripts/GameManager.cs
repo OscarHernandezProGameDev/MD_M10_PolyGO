@@ -34,11 +34,35 @@ namespace PolyGo
         private bool _isGamePaused;
         private bool _isGameOver;
 
-        public bool HasLevelStarted { get => _hasLevelStarted; set => _hasLevelStarted = value; }
-        public bool HasLevelFinished { get => _hasLevelFinished; set => _hasLevelFinished = value; }
-        public bool IsGamePlaying { get => _isGamePlaying; set => _isGamePlaying = value; }
-        public bool IsGamePaused { get => _isGamePaused; set => _isGamePaused = value; }
-        public bool IsGameOver { get => _isGameOver; set => _isGameOver = value; }
+        public bool HasLevelStarted
+        {
+            get => _hasLevelStarted;
+            set => _hasLevelStarted = value;
+        }
+
+        public bool HasLevelFinished
+        {
+            get => _hasLevelFinished;
+            set => _hasLevelFinished = value;
+        }
+
+        public bool IsGamePlaying
+        {
+            get => _isGamePlaying;
+            set => _isGamePlaying = value;
+        }
+
+        public bool IsGamePaused
+        {
+            get => _isGamePaused;
+            set => _isGamePaused = value;
+        }
+
+        public bool IsGameOver
+        {
+            get => _isGameOver;
+            set => _isGameOver = value;
+        }
 
         public Turn CurrentTurn => _currentTurn;
 
@@ -54,7 +78,7 @@ namespace PolyGo
             switch (_currentTurn)
             {
                 case Turn.Player:
-                    if (playerManager.TurnCompleted)
+                    if (playerManager.TurnCompleted && !AllEnemiesAreDead())
                         PlayEnemyTurn();
                     break;
                 case Turn.Enemy:
@@ -111,6 +135,7 @@ namespace PolyGo
                 _hasLevelFinished = true;
                 yield return null;
             }
+
             RestartNivel();
         }
 
@@ -176,19 +201,34 @@ namespace PolyGo
         private void PlayEnemyTurn()
         {
             _currentTurn = Turn.Enemy;
-            foreach (var enemyManager in enemyManagers)
-                if (enemyManager != null)
+            foreach (var enemy in enemyManagers)
+                if (enemy != null && !enemy.IsDead)
                 {
-                    enemyManager.TurnCompleted = false;
-                    enemyManager.PlayTurn();
+                    enemy.TurnCompleted = false;
+                    enemy.PlayTurn();
                 }
         }
 
         private bool IsEnemyTurnComplete()
         {
-            foreach (var enemyManager in enemyManagers)
-                if (!enemyManager.TurnCompleted)
+            foreach (var enemy in enemyManagers)
+            {
+                if (enemy.IsDead)
+                    continue;
+                if (!enemy.TurnCompleted)
                     return false;
+            }
+
+            return true;
+        }
+
+        private bool AllEnemiesAreDead()
+        {
+            foreach (var enemy in enemyManagers)
+            {
+                if (!enemy.IsDead)
+                    return false;
+            }
 
             return true;
         }

@@ -59,7 +59,7 @@ namespace PolyGo
                 yield break;
 
             // Detect Player
-            enemySensor.UpdateSensor();
+            enemySensor.UpdateSensor(enemyController.CurrentDot);
 
             // Wait
             // lo comentamos para que no se llame a los otros enemigos
