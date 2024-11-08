@@ -8,12 +8,14 @@ namespace PolyGo
 {
     [RequireComponent(typeof(EnemyController))]
     [RequireComponent(typeof(EnemySensor))]
+    [RequireComponent(typeof(EnemyAttack))]
     public class EnemyManager : TurnManager
     {
         public UnityEvent deathEvent;
 
         private EnemyController enemyController;
         private EnemySensor enemySensor;
+        private EnemyAttack enemyAttack;
         private GridSystem gridSystem;
 
         private bool _isDead = false;
@@ -50,6 +52,7 @@ namespace PolyGo
             base.Awake();
             enemyController = GetComponent<EnemyController>();
             enemySensor = GetComponent<EnemySensor>();
+            enemyAttack = GetComponent<EnemyAttack>();
             gridSystem = FindFirstObjectByType<GridSystem>();
         }
 
@@ -67,9 +70,19 @@ namespace PolyGo
 
             if (enemySensor.FoundPlayer)
             {
-                // Attack Player
-                // Notify GameManager to lose level
+                // Notify GameManager to lose level, lo ponemos antes del attack para que el game Manager cambie de estado
                 gameManager.LoseLevel();
+
+                Vector3 positionPlayer = new Vector3(gridSystem.ActivePlayerDot.DotPosition.x, 0,
+                    gridSystem.ActivePlayerDot.DotPosition.y);
+
+                // el enemigo se abalanza sobre el player
+                enemyController.Move(positionPlayer, 0f);
+                while (enemyController.IsMoving)
+                    yield return null;
+
+                // Attack Player
+                enemyAttack.Attack();
             }
             else
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PolyGo.Player
 {
@@ -11,12 +12,19 @@ namespace PolyGo.Player
         public PlayerController playerController;
         public GatherInput playerInput;
 
+        public UnityEvent deathEvent;
+
         private GridSystem gridSystem;
 
         public override void TurnFinish()
         {
             CaptureEnemies();
             base.TurnFinish();
+        }
+
+        public void Die()
+        {
+            deathEvent?.Invoke();
         }
 
         protected override void Awake()

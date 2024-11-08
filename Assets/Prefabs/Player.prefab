@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8576459977186755098}
   - component: {fileID: 3011514611009189511}
   - component: {fileID: 2195846692959303908}
+  - component: {fileID: 2837232987786678659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -49,11 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227be6d4e2d395b4b8462e0e3b97c24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.45
-  ease: 7
   destination: {x: 0, y: 0, z: 0}
-  _isMoving: 0
   faceDestination: 0
+  ease: 7
+  _isMoving: 0
   FinishMovementEvent:
     m_PersistentCalls:
       m_Calls:
@@ -69,6 +69,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  moveSpeed: 0.45
 --- !u!114 &8576459977186755098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +96,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   playerInput: {fileID: 0}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2837232987786678659}
+        m_TargetAssemblyTypeName: PolyGo.PlayerDeath, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2195846692959303908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +142,21 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerNormal
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2837232987786678659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692193580512866560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618fa74c4e4899843b1a527cb069135c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathRotation: {x: 90, y: 0, z: 0}
+  duration: 0.3
+  ease: 31
 --- !u!1 &1449580402744704097
 GameObject:
   m_ObjectHideFlags: 0

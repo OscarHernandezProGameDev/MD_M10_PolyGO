@@ -23,7 +23,12 @@ namespace PolyGo
         protected Dot _currentDot;
 
 
-        public bool IsMoving { get => _isMoving; set => _isMoving = value; }
+        public bool IsMoving
+        {
+            get => _isMoving;
+            set => _isMoving = value;
+        }
+
         public Dot CurrentDot => _currentDot;
 
         public void MoveLeft()
@@ -48,17 +53,7 @@ namespace PolyGo
             Move(transform.position + new Vector3(0, 0, -GridSystem.spacing));
         }
 
-        protected virtual void Awake()
-        {
-            gridSystem = FindFirstObjectByType<GridSystem>();
-        }
-
-        protected virtual void Start()
-        {
-            UpdateCurrentDot();
-        }
-
-        private protected void Move(Vector3 destinationPosition, float delay = 0.15f)
+        public void Move(Vector3 destinationPosition, float delay = 0.15f)
         {
             if (IsMoving)
                 return;
@@ -81,9 +76,9 @@ namespace PolyGo
                         sequence.Append
                         (
                             transform.DOMove(destinationPosition, moveSpeed)
-                            .SetDelay(delay)
-                            .SetEase(ease)
-                            .OnComplete(() => OnCompleteMove(destinationPosition))
+                                .SetDelay(delay)
+                                .SetEase(ease)
+                                .OnComplete(() => OnCompleteMove(destinationPosition))
                         );
                     }
                     else
@@ -92,7 +87,19 @@ namespace PolyGo
             }
         }
 
-        protected virtual void OnBeforeMove() { }
+        protected virtual void Awake()
+        {
+            gridSystem = FindFirstObjectByType<GridSystem>();
+        }
+
+        protected virtual void Start()
+        {
+            UpdateCurrentDot();
+        }
+
+        protected virtual void OnBeforeMove()
+        {
+        }
 
         protected virtual void OnCompleteMove(Vector3 destinationPosition)
         {
