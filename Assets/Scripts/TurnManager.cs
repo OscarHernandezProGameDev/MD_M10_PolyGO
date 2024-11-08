@@ -10,9 +10,13 @@ namespace PolyGo
         private protected GameManager gameManager;
         private protected bool _turnCompleted = false;
 
-        public bool TurnCompleted { get => _turnCompleted; set => _turnCompleted = value; }
+        public bool TurnCompleted
+        {
+            get => _turnCompleted;
+            set => _turnCompleted = value;
+        }
 
-        public void TurnFinish()
+        public virtual void TurnFinish()
         {
             _turnCompleted = true;
 

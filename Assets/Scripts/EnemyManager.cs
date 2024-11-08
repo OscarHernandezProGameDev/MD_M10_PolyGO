@@ -2,21 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PolyGo
 {
     [RequireComponent(typeof(EnemyController))]
     [RequireComponent(typeof(EnemySensor))]
-
     public class EnemyManager : TurnManager
     {
+        public UnityEvent deathEvent;
+
         private EnemyController enemyController;
         private EnemySensor enemySensor;
         private GridSystem gridSystem;
 
         private bool _isDead = false;
 
-        public bool IsDead { get => _isDead; set => _isDead = value; }
+        public bool IsDead
+        {
+            get => _isDead;
+            set => _isDead = value;
+        }
 
         public void PlayTurn()
         {
@@ -26,6 +32,7 @@ namespace PolyGo
 
                 return;
             }
+
             StartCoroutine(PlayTurnRoutine());
         }
 
@@ -35,6 +42,7 @@ namespace PolyGo
                 return;
 
             _isDead = true;
+            deathEvent?.Invoke();
         }
 
         protected override void Awake()
