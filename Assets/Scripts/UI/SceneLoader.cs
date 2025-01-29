@@ -3,24 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PolyGo
 {
-    public class ProvisionalTesting : MonoBehaviour
+    public class SceneLoader : MonoBehaviour
     {
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private float fadeDuration = 0.2f;
 
-        [SerializeField] private Button backToMenuButton;
-
         private void Start()
         {
             canvasGroup.alpha = 0;
-            backToMenuButton.onClick.AddListener(() => LoadScene("MainMenu"));
         }
 
-        private void LoadScene(string sceneName)
+        public void LoadScene(string sceneName)
         {
             SceneManagerController.Instance.SceneToLoad = sceneName;
             StartCoroutine(DoFadeAndLoadScene());
