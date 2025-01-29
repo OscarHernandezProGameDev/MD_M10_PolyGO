@@ -36,7 +36,8 @@ namespace PolyGo
 
         private IEnumerator LoadSceneAsync()
         {
-            // obtener el nombre de la escena a cargar
+            sceneToLoad = SceneManagerController.Instance.SceneToLoad;
+
             if (string.IsNullOrEmpty(sceneToLoad))
                 sceneToLoad = "MainMenu";
 
