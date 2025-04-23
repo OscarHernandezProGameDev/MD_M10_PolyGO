@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using PolyGo.Player;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace PolyGo
@@ -19,6 +20,10 @@ namespace PolyGo
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private float delay;
+
+        public UnityEvent startLevelEvent;
+        public UnityEvent playLevelEvent;
+        public UnityEvent endLevelEvent;
 
         private GridSystem gridSystem;
 
@@ -121,6 +126,7 @@ namespace PolyGo
                 //_hasLevelStarted = true;
                 yield return null;
             }
+            startLevelEvent?.Invoke();
         }
 
         IEnumerator EndLevelRoutine()
@@ -128,6 +134,7 @@ namespace PolyGo
             playerManager.playerInput.InputEnabled = false;
             // Mostrar pantalla fin de nivel
 
+            endLevelEvent?.Invoke();
             while (!_hasLevelFinished)
             {
                 // Boton de continuar
@@ -136,7 +143,7 @@ namespace PolyGo
                 yield return null;
             }
 
-            RestartNivel();
+            //RestartNivel();
         }
 
         private void RestartNivel()
@@ -151,11 +158,11 @@ namespace PolyGo
         IEnumerator PlayLevelRoutine()
         {
             _isGamePlaying = true;
-            gridSystem.InitGrid();
-            gridSystem.DrawFinalTargetDot();
             yield return new WaitForSeconds(delay);
             playerManager.playerInput.InputEnabled = true;
             playerArrow.SetArrows();
+
+            playLevelEvent?.Invoke();
 
             while (!_isGameOver)
             {
