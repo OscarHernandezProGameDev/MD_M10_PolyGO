@@ -7,11 +7,21 @@ namespace PolyGo
 {
     public class GraphicMover : MonoBehaviour
     {
+        // Efecto pulso para el start button
+        [Header("Pulse Effect")]
         [SerializeField] private RectTransform startButtonRectTransform;
         [SerializeField] private float pulseDuration = 0.5f;
         [SerializeField] private float pulseScale = 1.2f;
         [SerializeField] private float pulseDelay = 0.3f;
         [SerializeField] private Ease startButtonEase = Ease.InOutSine;
+
+        // Efecto de movimiento para los elementos del endScreen
+        [Header("Move Effect")]
+        [SerializeField] private Transform startPosition;
+        [SerializeField] private Transform endPosition;
+        [SerializeField] private float moveTime;
+        [SerializeField] private float moveDelay;
+        [SerializeField] private Ease endSreenEase = Ease.OutBack;
 
         private Sequence pulseSequence;
 
@@ -36,5 +46,17 @@ namespace PolyGo
                 pulseSequence = null;
             }
         }
+
+        public void MoveFromTo()
+        {
+            Vector3 finalPosition = endPosition.position;
+
+            transform.position = startPosition.position;
+            transform
+                .DOMove(finalPosition, moveTime)
+                .SetDelay(moveDelay)
+                .SetEase(endSreenEase);
+        }
+
     }
 }
