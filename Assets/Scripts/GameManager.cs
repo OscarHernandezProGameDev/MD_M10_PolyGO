@@ -78,6 +78,15 @@ namespace PolyGo
 
         public void LoseLevel() => StartCoroutine(LoseLevelRoutine());
 
+        public void RestartLevel()
+        {
+            DOTween.KillAll();
+
+            Scene scene = SceneManager.GetActiveScene();
+
+            SceneManager.LoadScene(scene.name);
+        }
+
         public void UpdateTurn()
         {
             switch (_currentTurn)
@@ -146,15 +155,6 @@ namespace PolyGo
             //RestartNivel();
         }
 
-        private void RestartNivel()
-        {
-            DOTween.KillAll();
-
-            Scene scene = SceneManager.GetActiveScene();
-
-            SceneManager.LoadScene(scene.name);
-        }
-
         IEnumerator PlayLevelRoutine()
         {
             _isGamePlaying = true;
@@ -187,7 +187,7 @@ namespace PolyGo
 
             Debug.Log("YOU LOSE!!");
 
-            RestartNivel();
+            RestartLevel();
         }
 
         private bool IsWinner()
