@@ -21,6 +21,7 @@ namespace PolyGo
     {
         [SerializeField] private float delay;
 
+        public UnityEvent setUpEvent;
         public UnityEvent startLevelEvent;
         public UnityEvent playLevelEvent;
         public UnityEvent endLevelEvent;
@@ -127,6 +128,7 @@ namespace PolyGo
 
         IEnumerator StartLevelRoutine()
         {
+            setUpEvent?.Invoke();
             playerManager.playerInput.InputEnabled = false;
             while (!_hasLevelStarted)
             {

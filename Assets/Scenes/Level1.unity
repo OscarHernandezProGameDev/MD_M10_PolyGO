@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 36757646}
   - component: {fileID: 36757645}
   - component: {fileID: 36757648}
+  - component: {fileID: 36757649}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -432,6 +433,23 @@ MonoBehaviour:
   delay: 0.3
   timeToFade: 1
   easeType: 18
+--- !u!114 &36757649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36757643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e534592ffd8042f9147ad80a923a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButtonRectTransform: {fileID: 36757644}
+  pulseDuration: 0.7
+  pulseScale: 1.2
+  pulseDelay: 0.2
+  startButtonEase: 4
 --- !u!4 &53993637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6318236113763239315, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
@@ -1757,7 +1775,7 @@ PrefabInstance:
     - target: {fileID: 7928974275277459942, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
         type: 3}
       propertyPath: _isFinalTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8291140188110252638, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
         type: 3}
@@ -4615,6 +4633,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1.4
+  setUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 36757649}
+        m_TargetAssemblyTypeName: PolyGo.GraphicMover, Assembly-CSharp
+        m_MethodName: StartPulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1353085722}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 426746789}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1241871840}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startLevelEvent:
     m_PersistentCalls:
       m_Calls:
@@ -4685,6 +4754,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 36757649}
+        m_TargetAssemblyTypeName: PolyGo.GraphicMover, Assembly-CSharp
+        m_MethodName: StopPulse
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4787,7 +4868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1241871841
 RectTransform:
   m_ObjectHideFlags: 0
