@@ -14,12 +14,17 @@ namespace PolyGo
 
     public class CharacterSelectionManager : MonoBehaviour
     {
+        // Gestión de botones
         [SerializeField] private Button confirmCharacterButton;
         [SerializeField] private Button selectLevelButton;
         [SerializeField] private Button characterSelectionLeftButton;
         [SerializeField] private Button characterSelectionRightButton;
+
+        // Gestión de textos
         [SerializeField] private TextMeshProUGUI titleSceneText;
         [SerializeField] private TextMeshProUGUI currentCharacterNameText;
+
+        // Selección de personaje
         [SerializeField] private SelectableCharacters selectedCharacter = SelectableCharacters.Character1;
         [SerializeField] private Transform selectableCharactersPosition;
 
@@ -27,14 +32,14 @@ namespace PolyGo
 
         public void ConfirmCharacter()
         {
-            // Save selected character at PlayerPrefs
+            // Guardar el personaje seleccionado en PlayerPrefs
             PlayerPrefs.SetInt("SelectedCharacter", (int)selectedCharacter);
             PlayerPrefs.Save();
 
-            // Disable confirm button
+            // Desactivar el botón de confirmar el personaje
             confirmCharacterButton.gameObject.SetActive(false);
 
-            // Enable select level button
+            // Activa el botón de selección de nivel
             selectLevelButton.gameObject.SetActive(true);
         }
 
@@ -60,10 +65,10 @@ namespace PolyGo
 
         void Start()
         {
-            // Get selected character from PlayerPrefs, if not exists, set default character1
+            // Tome el valor de la selección de personaje de PlayerPrefs, si no existe, establezca el personaje predeterminado Character1
             selectedCharacter = (SelectableCharacters)PlayerPrefs.GetInt("SelectedCharacter", (int)SelectableCharacters.Character1);
 
-            // Disable select level button until you confirm character
+            // desactivar el botón de selección de nível hasta que confirmeros personaje
             selectLevelButton.gameObject.SetActive(false);
 
             UpdateCharacterPosition();
@@ -72,16 +77,16 @@ namespace PolyGo
 
         private void UpdateCharacterPosition()
         {
-            // Calculate new X position depending on selected character
+            // Calcula la nueva en X depedendiendo del personaje seleccionado
             float newXPosition = -(int)selectedCharacter * spaceBetweenCharacters;
 
-            // Move selectableCharactersPosition GO to new Position
+            // Mueve el GO de "selectableCharactersPosition" hasta la nueva posición
             selectableCharactersPosition.DOLocalMoveX(newXPosition, 0.5f).SetEase(Ease.InOutQuad);
         }
 
         private void UpdateCharacterName()
         {
-            // Update character name text
+            // Actualiza los nombres de los personajes usando el enumerado "selectedCharacter"
             currentCharacterNameText.text = selectedCharacter.ToString();
         }
     }

@@ -133,9 +133,7 @@ namespace PolyGo
             playerManager.playerInput.InputEnabled = false;
             while (!_hasLevelStarted)
             {
-                // Mostrar cartel inicio
-                // Mostrar botón start
-                //_hasLevelStarted = true;
+                // Esperamos hasta que se pulse el boton de start
                 yield return null;
             }
             startLevelEvent?.Invoke();
@@ -144,18 +142,15 @@ namespace PolyGo
         IEnumerator EndLevelRoutine()
         {
             playerManager.playerInput.InputEnabled = false;
-            // Mostrar pantalla fin de nivel
 
             endLevelEvent?.Invoke();
             while (!_hasLevelFinished)
             {
-                // Boton de continuar
-                Debug.Log("YOU WIN!!");
+                // Boton de continuar al siguiente nivel
+                // Actualizar nivel mas alto completado
                 _hasLevelFinished = true;
                 yield return null;
             }
-
-            //RestartNivel();
         }
 
         IEnumerator PlayLevelRoutine()
@@ -169,14 +164,7 @@ namespace PolyGo
 
             while (!_isGameOver)
             {
-                // Revisar condiciones de game over
-
-                // Reviso si gano
                 // Resultados
-
-                // Revisar si pierdo
-                // GameOver=true;
-
                 yield return null;
                 _isGameOver = IsWinner();
             }
@@ -199,6 +187,7 @@ namespace PolyGo
         private bool IsWinner()
         {
             if (gridSystem.ActivePlayerDot != null && gridSystem.FinalTargetDot != null)
+                // si el dot del player es el mismo que finalTargetDoc, devolvermos true
                 return gridSystem.ActivePlayerDot == gridSystem.FinalTargetDot;
 
             return false;

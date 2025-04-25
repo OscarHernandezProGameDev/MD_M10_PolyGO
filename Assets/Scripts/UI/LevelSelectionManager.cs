@@ -15,11 +15,16 @@ namespace PolyGo
 
     public class LevelSelectionManager : MonoBehaviour
     {
+        // Gestión de botones
         [SerializeField] private Button playLevelButton;
         [SerializeField] private Button levelSelectionLeftButton;
         [SerializeField] private Button levelSelectionRightButton;
+
+        // Gestión de textos
         [SerializeField] private TextMeshProUGUI titleSceneText;
         [SerializeField] private TextMeshProUGUI currentLevelNameText;
+
+        // Selección de nivel
         [SerializeField] private Levels selectedLevel = Levels.Level1;
         [SerializeField] private Transform selectableLevelsPosition;
         [SerializeField] private SceneLoader sceneLoader;
@@ -32,6 +37,7 @@ namespace PolyGo
             sceneLoader.LoadScene(selectedLevel.ToString());
         }
 
+        // Métodos para ir a traves de los niveles de las fechas
         public void LevelSelectionLeft()
         {
             if (selectedLevel > Levels.Level1)
@@ -56,7 +62,7 @@ namespace PolyGo
 
         private void Start()
         {
-            // Get the highest unlocked level from PlayPrefs, it's null set to level 1
+            // Toma el nível mas alto debloqueado desde PlayPrefs, si es nulo configuralo al nível 1
             highestUnlockedLevel = PlayerPrefs.GetInt("HighestUnlockedLevel", 1);
 
             UpdateLevelPosition();
@@ -66,22 +72,19 @@ namespace PolyGo
 
         private void UpdateLevelPosition()
         {
-            // Calculate new X position depending on selected character
             float newXPosition = -(int)selectedLevel * spaceBetweenCharacters;
 
-            // Move selectableCharactersPosition GO to new Position
             selectableLevelsPosition.DOLocalMoveX(newXPosition, 0.5f).SetEase(Ease.InOutQuad);
         }
 
         private void UpdateLevelName()
         {
-            // Update character name text
             currentLevelNameText.text = selectedLevel.ToString();
         }
 
         private void UpdatePlayButtonState()
         {
-            // Check if the select level is unlocked and enabled/disable play button depending on it
+            // Comprueba si el nível seleccionado esta desbloqueado y activa/desactiva el playbutton en consecuencia
             if ((int)selectedLevel + 1 <= highestUnlockedLevel)
                 playLevelButton.interactable = true;
             else
