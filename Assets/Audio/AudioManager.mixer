@@ -131,14 +131,26 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - caad658538492844f9c8b74af2f95390
+    name: Master
+  - guids:
+    - ba0aa44363c73754b9952363e4c8d886
+    - 5c1fd86d2cd70bf458912df83b1d83f4
+    name: Music
+  - guids:
+    - bcad166dff377c14eb59d6df2e18f1d6
+    - c8640c22594870b4c82cf8e836220553
+    - 352ebc0bb02fbd74e9e1772d13c269f6
+    name: Characters
+  - guids:
+    - caad658538492844f9c8b74af2f95390
     - ba0aa44363c73754b9952363e4c8d886
     - b8bca9d0dbb95dc4faa20151bdb839bd
     - 5c1fd86d2cd70bf458912df83b1d83f4
     - bcad166dff377c14eb59d6df2e18f1d6
     - c8640c22594870b4c82cf8e836220553
     - 352ebc0bb02fbd74e9e1772d13c269f6
-    name: View
-  m_CurrentViewIndex: 0
+    name: All
+  m_CurrentViewIndex: 3
   m_TargetSnapshot: {fileID: -7613361219536083838}
 --- !u!243 &24300002
 AudioMixerGroupController:
