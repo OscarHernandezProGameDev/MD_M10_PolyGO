@@ -3206,6 +3206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 702711502}
   - component: {fileID: 702711501}
+  - component: {fileID: 702711503}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -3223,7 +3224,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 15dc6f14f556010409f20639f2664eac, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3324,6 +3325,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &702711503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702711500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce403775f1798c54ea23265d20a39716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 15dc6f14f556010409f20639f2664eac, type: 3}
 --- !u!1001 &704000731
 PrefabInstance:
   m_ObjectHideFlags: 0
