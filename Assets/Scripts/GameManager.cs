@@ -25,6 +25,7 @@ namespace PolyGo
         public UnityEvent startLevelEvent;
         public UnityEvent playLevelEvent;
         public UnityEvent endLevelEvent;
+        public UnityEvent loseLevelEvent;
 
         private GridSystem gridSystem;
 
@@ -185,9 +186,12 @@ namespace PolyGo
         {
             IsGameOver = true;
 
-            yield return new WaitForSeconds(2f);
+            // para que se puedar ver como captura al player
+            yield return new WaitForSeconds(1.5f);
+            loseLevelEvent?.Invoke();
 
-            Debug.Log("YOU LOSE!!");
+            yield return new WaitForSeconds(1.5f);
+
 
             RestartLevel();
         }

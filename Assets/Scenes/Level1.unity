@@ -1607,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &426746790
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1679,8 +1679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solidColor: {r: 1, g: 1, b: 1, a: 1}
   clearColor: {r: 1, g: 1, b: 1, a: 0}
-  delay: 0.3
-  timeToFade: 1
+  delay: 0.5
+  timeToFade: 2
   easeType: 18
 --- !u!1001 &454436155
 PrefabInstance:
@@ -1748,7 +1748,7 @@ PrefabInstance:
     - target: {fileID: 7928974275277459942, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
         type: 3}
       propertyPath: _isFinalTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8291140188110252638, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
         type: 3}
@@ -4922,7 +4922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f9da6a5d7c04adaa8ee0c0b13eaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1.4
+  delay: 2
   setUpEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5199,6 +5199,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  loseLevelEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 426746789}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 426746793}
+        m_TargetAssemblyTypeName: PolyGo.ScreenFader, Assembly-CSharp
+        m_MethodName: FadeIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1203705731
 Transform:
   m_ObjectHideFlags: 0
@@ -5360,7 +5387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1353085723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6328,6 +6355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: autoRun
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928974275277459942, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
+        type: 3}
+      propertyPath: _isFinalTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8291140188110252638, guid: 9186c1e3c6722e548bf4060dbbdfa0e0,
         type: 3}
@@ -7759,7 +7791,7 @@ PrefabInstance:
     - target: {fileID: 8988271260943891607, guid: 1963e973e14a129459fe1302de028568,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8988271260943891607, guid: 1963e973e14a129459fe1302de028568,
         type: 3}
