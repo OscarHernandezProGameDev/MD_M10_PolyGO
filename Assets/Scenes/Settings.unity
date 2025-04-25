@@ -3438,7 +3438,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 685253444}
   m_HandleRect: {fileID: 710639718}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -4556,7 +4556,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 81350812}
   m_HandleRect: {fileID: 1106130210}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -6840,7 +6840,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1478179140}
   m_HandleRect: {fileID: 212117402}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -6859,6 +6859,7 @@ GameObject:
   - component: {fileID: 1219221038}
   - component: {fileID: 1219221037}
   - component: {fileID: 1219221036}
+  - component: {fileID: 1219221040}
   m_Layer: 5
   m_Name: CanvasSettings
   m_TagString: Untagged
@@ -6952,6 +6953,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1219221040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219221035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39810ebc4b567c74fa59cfe413db65de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalVolumeSlider: {fileID: 1196009816}
+  musicVolumeSlider: {fileID: 561382124}
+  soundFXSlider: {fileID: 785336184}
+  musicToggle: {fileID: 2046533184}
+  soundFXToggle: {fileID: 1577416899}
+  myAudioMixer: {fileID: 24100000, guid: b7e12319d2204804d8ef293b6f7f11a8, type: 2}
 --- !u!1 &1222504380
 GameObject:
   m_ObjectHideFlags: 0
