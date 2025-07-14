@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleTime: 0.5
   delay: 0.2
-  lineTickness: 0.09
-  lineHeight: 0.015
+  lineTickness: 0.1
+  lineHeight: 0.07
   ease: 7
 --- !u!1 &3793670794042101371
 GameObject:
