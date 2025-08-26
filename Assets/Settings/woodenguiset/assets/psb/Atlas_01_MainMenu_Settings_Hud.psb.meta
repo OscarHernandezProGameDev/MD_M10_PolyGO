@@ -1,0 +1,1596 @@
+fileFormatVersion: 2
+guid: 337fe37584eb9984ab4124e0439ed9db
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: star icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 653
+      y: 1726
+      width: 137
+      height: 142
+    spriteID: 8a329310ae464d34fb9cefc8bb4dad31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 653, y: 1726}
+    spritePosition: {x: 1910, y: 1375}
+  - name: Stopwatch
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1823
+      y: 1542
+      width: 135
+      height: 155
+    spriteID: 044c5dd0284b82c4d8297dabb51d992c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1823, y: 1542}
+    spritePosition: {x: 815, y: 167}
+  - name: Coin icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 798
+      y: 1726
+      width: 128
+      height: 128
+    spriteID: e325a1641b420dd45a3edaae5aea6c2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 798, y: 1726}
+    spritePosition: {x: 952, y: 8}
+  - name: Experience icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1910
+      y: 4
+      width: 128
+      height: 153
+    spriteID: 50fb0815cc58c33478e34cbe1798ad77
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1910, y: 4}
+    spritePosition: {x: 815, y: 6}
+  - name: Life icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1966
+      y: 1542
+      width: 77
+      height: 73
+    spriteID: 1eef0fb81a338184798fb572605afee8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1966, y: 1542}
+    spritePosition: {x: 1966, y: 683}
+  - name: diamond icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1966
+      y: 1623
+      width: 74
+      height: 70
+    spriteID: 8bfffbbbf625f9642b4c3993cfaf6a70
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1966, y: 1623}
+    spritePosition: {x: 1968, y: 834}
+  - name: Coin
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1964
+      y: 716
+      width: 68
+      height: 68
+    spriteID: 15d1261d4853ff54c9e6a8ef4094aafb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1964, y: 716}
+    spritePosition: {x: 1971, y: 761}
+  - name: Label 2500
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1356
+      y: 344
+      width: 517
+      height: 172
+    spriteID: 4724a9b4e1c8bac4d8e29a448c71dab2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1356, y: 344}
+    spritePosition: {x: 1529, y: 147}
+  - name: Label 250
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1356
+      y: 524
+      width: 517
+      height: 172
+    spriteID: 6a85618f1f7617849ad98aecd100660f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1356, y: 524}
+    spritePosition: {x: 1003, y: 150}
+  - name: Label Best Choice
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1885
+      width: 398
+      height: 160
+    spriteID: 501daff3c4eae444894d3f5319fecdb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1885}
+    spritePosition: {x: 403, y: 25}
+  - name: Label Most Popular
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 410
+      y: 1885
+      width: 397
+      height: 160
+    spriteID: d935b5c0a17a2b043b10d44a8cfda90f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 410, y: 1885}
+    spritePosition: {x: 0, y: 25}
+  - name: Slider
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1493
+      y: 925
+      width: 199
+      height: 101
+    spriteID: ab1b8cb06d147fb47969cef71d392f83
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1493, y: 925}
+    spritePosition: {x: 227, y: 212}
+  - name: Arrow scroll down kopiuj
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1873
+      y: 925
+      width: 123
+      height: 108
+    spriteID: 738f31f5b6644c94b8deb7651d9b93fa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1873, y: 925}
+    spritePosition: {x: 1090, y: 20}
+  - name: Arrow scroll down
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1904
+      y: 1254
+      width: 123
+      height: 113
+    spriteID: d6189f02a7c7f614eb68c8114c7d73aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1904, y: 1254}
+    spritePosition: {x: 681, y: 225}
+  - name: Arrow scroll right kopiuj
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 934
+      y: 1726
+      width: 113
+      height: 123
+    spriteID: 5617587a2e86966459f8345803d418f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 934, y: 1726}
+    spritePosition: {x: 558, y: 213}
+  - name: Arrow scroll right
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1055
+      y: 1726
+      width: 113
+      height: 123
+    spriteID: dafcfcce1acb574488c7b7f43f67a010
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1055, y: 1726}
+    spritePosition: {x: 440, y: 213}
+  - name: Button No
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 815
+      y: 1885
+      width: 373
+      height: 142
+    spriteID: 158e20eca9c38ab459384f9e0aa9b494
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 815, y: 1885}
+    spritePosition: {x: 1286, y: 3}
+  - name: Button Yes
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1196
+      y: 1885
+      width: 373
+      height: 142
+    spriteID: 7cac77b4584639845b551985a1011e16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1196, y: 1885}
+    spritePosition: {x: 1671, y: 3}
+  - name: Hud Coin icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1298
+      y: 1726
+      width: 109
+      height: 108
+    spriteID: 6aaac617f6259c14a88ca24728a0cb4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1298, y: 1726}
+    spritePosition: {x: 1930, y: 906}
+  - name: Hud Life icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1881
+      y: 524
+      width: 150
+      height: 145
+    spriteID: 9cee7cd63ea6925478304e4c6a161880
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1881, y: 524}
+    spritePosition: {x: 3, y: 195}
+  - name: life bar
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1964
+      y: 792
+      width: 60
+      height: 67
+    spriteID: 7d0552894f6aff04492aa8081fe8bdb2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1964, y: 792}
+    spritePosition: {x: 159, y: 197}
+  - name: experience bar
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1670
+      y: 244
+      width: 60
+      height: 67
+    spriteID: 1135adf50aca2a34ba80c992cb835c48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1670, y: 244}
+    spritePosition: {x: 159, y: 270}
+  - name: Hud Diamond icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1176
+      y: 1726
+      width: 114
+      height: 108
+    spriteID: ac0d44c42011abd46871ffa5eb1c9e1e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1176, y: 1726}
+    spritePosition: {x: 1933, y: 1258}
+  - name: Hud Experience icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1910
+      y: 165
+      width: 128
+      height: 153
+    spriteID: 82742a22e87e19147ac7410e651dd3a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1910, y: 165}
+    spritePosition: {x: 1919, y: 1524}
+  - name: Hud
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1218
+      y: 1542
+      width: 597
+      height: 136
+    spriteID: 6c9648b5facc8e4498866db9c7adab67
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1218, y: 1542}
+    spritePosition: {x: 174, y: 319}
+  - name: icon back
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1700
+      y: 925
+      width: 165
+      height: 102
+    spriteID: 5c7a281759c2c004eb692698c8e5b2ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1700, y: 925}
+    spritePosition: {x: 3, y: 351}
+  - name: arrows
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1218
+      y: 1384
+      width: 576
+      height: 150
+    spriteID: 506a9236adbd31343b409121d2e9aa75
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1218, y: 1384}
+    spritePosition: {x: 1233, y: 1023}
+  - name: toggle button background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1726
+      width: 465
+      height: 151
+    spriteID: 77dfff69a9f80b743926624947d647ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1726}
+    spritePosition: {x: 1234, y: 1181}
+  - name: button OFF kopiuj
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1577
+      y: 1885
+      width: 432
+      height: 116
+    spriteID: a0079b5091ef99745a33b760ee5d83b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1577, y: 1885}
+    spritePosition: {x: 1534, y: 1686}
+  - name: icon background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2293
+      width: 203
+      height: 192
+    spriteID: 0f5d6d495d057e54aa506638d822fa88
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2293}
+    spritePosition: {x: 1840, y: 1853}
+  - name: button board
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1493
+      y: 716
+      width: 463
+      height: 201
+    spriteID: 620875959a5dcc841a622bac9db97b35
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1493, y: 716}
+    spritePosition: {x: 1494, y: 694}
+  - name: Main Label
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1384
+      width: 1206
+      height: 334
+    spriteID: 17a003ba355a6cf499d56ad2643b0637
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1384}
+    spritePosition: {x: 831, y: 327}
+  - name: button board
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1230
+      y: 1045
+      width: 803
+      height: 201
+    spriteID: 8c3baa9bd5695864fbf0d8b5ac091b57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1230, y: 1045}
+    spritePosition: {x: 3, y: 460}
+  - name: button OFF
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1230
+      y: 1254
+      width: 432
+      height: 116
+    spriteID: d76148748d5a3d24e99a532d9764f88b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1230, y: 1254}
+    spritePosition: {x: 1491, y: 901}
+  - name: OFF
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1802
+      y: 1384
+      width: 226
+      height: 116
+    spriteID: b56aa2fbf1951f14f8256b21c29a1aaa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1802, y: 1384}
+    spritePosition: {x: 1704, y: 1216}
+  - name: ON
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1670
+      y: 1254
+      width: 226
+      height: 116
+    spriteID: 1d5403713cc7e234c8f75695b6763d67
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1670, y: 1254}
+    spritePosition: {x: 1674, y: 1336}
+  - name: 'Button X '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 244
+      y: 2053
+      width: 236
+      height: 219
+    spriteID: 47697315afc4ef94eba539862262be6f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 244, y: 2053}
+    spritePosition: {x: 1669, y: 1457}
+  - name: plank4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 716
+      width: 1481
+      height: 321
+    spriteID: ac26da0296b9f1b4a99ba6c1a65a8316
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 716}
+    spritePosition: {x: 5, y: 670}
+  - name: plank3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1045
+      width: 1218
+      height: 331
+    spriteID: b4d25f72d4571a145928e82d5ba7961c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1045}
+    spritePosition: {x: 7, y: 1001}
+  - name: plank2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1658
+      height: 332
+    spriteID: d49ca2db83b819e4f851182a6dbe996c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 4, y: 1343}
+  - name: plank1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 344
+      width: 1344
+      height: 364
+    spriteID: 868e34e32f6e63d43bbbf586d4c8d245
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 344}
+    spritePosition: {x: 4, y: 1679}
+  - name: icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 477
+      y: 1726
+      width: 168
+      height: 124
+    spriteID: e0075b83e3c25c5438b0fff2eda87ada
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 477, y: 1726}
+    spritePosition: {x: 1356, y: 1682}
+  - name: icon background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1670
+      y: 4
+      width: 232
+      height: 232
+    spriteID: 7d8c2d2f10f1df44abe5afc7f19d2fab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1670, y: 4}
+    spritePosition: {x: 1356, y: 1813}
+  - name: icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1881
+      y: 344
+      width: 155
+      height: 158
+    spriteID: 3d8f18956dcb75a4796a71f1781beded
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1881, y: 344}
+    spritePosition: {x: 1819, y: 1050}
+  - name: icon background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2053
+      width: 232
+      height: 232
+    spriteID: 5baa5e132c507d143b13162150dd4733
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2053}
+    spritePosition: {x: 1598, y: 1813}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: star icon
+    spriteName: star icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8a329310ae464d34fb9cefc8bb4dad31
+    layerID: 480
+    mosaicPosition: {x: 653, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Stopwatch
+    spriteName: Stopwatch
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 044c5dd0284b82c4d8297dabb51d992c
+    layerID: 462
+    mosaicPosition: {x: 1823, y: 1542}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Coin icon
+    spriteName: Coin icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e325a1641b420dd45a3edaae5aea6c2a
+    layerID: 438
+    mosaicPosition: {x: 798, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Experience icon
+    spriteName: Experience icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 50fb0815cc58c33478e34cbe1798ad77
+    layerID: 426
+    mosaicPosition: {x: 1910, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Life icon
+    spriteName: Life icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1eef0fb81a338184798fb572605afee8
+    layerID: 383
+    mosaicPosition: {x: 1966, y: 1542}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: diamond icon
+    spriteName: diamond icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8bfffbbbf625f9642b4c3993cfaf6a70
+    layerID: 374
+    mosaicPosition: {x: 1966, y: 1623}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Coin
+    spriteName: Coin
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 15d1261d4853ff54c9e6a8ef4094aafb
+    layerID: 354
+    mosaicPosition: {x: 1964, y: 716}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Label 2500
+    spriteName: Label 2500
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4724a9b4e1c8bac4d8e29a448c71dab2
+    layerID: 355
+    mosaicPosition: {x: 1356, y: 344}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Label 250
+    spriteName: Label 250
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6a85618f1f7617849ad98aecd100660f
+    layerID: 375
+    mosaicPosition: {x: 1356, y: 524}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Label Best Choice
+    spriteName: Label Best Choice
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 501daff3c4eae444894d3f5319fecdb8
+    layerID: 336
+    mosaicPosition: {x: 4, y: 1885}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Label Most Popular
+    spriteName: Label Most Popular
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d935b5c0a17a2b043b10d44a8cfda90f
+    layerID: 328
+    mosaicPosition: {x: 410, y: 1885}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Slider
+    spriteName: Slider
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ab1b8cb06d147fb47969cef71d392f83
+    layerID: 320
+    mosaicPosition: {x: 1493, y: 925}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Arrow scroll down kopiuj
+    spriteName: Arrow scroll down kopiuj
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 738f31f5b6644c94b8deb7651d9b93fa
+    layerID: 415
+    mosaicPosition: {x: 1873, y: 925}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Arrow scroll down
+    spriteName: Arrow scroll down
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d6189f02a7c7f614eb68c8114c7d73aa
+    layerID: 399
+    mosaicPosition: {x: 1904, y: 1254}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Arrow scroll right kopiuj
+    spriteName: Arrow scroll right kopiuj
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5617587a2e86966459f8345803d418f3
+    layerID: 391
+    mosaicPosition: {x: 934, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Arrow scroll right
+    spriteName: Arrow scroll right
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dafcfcce1acb574488c7b7f43f67a010
+    layerID: 278
+    mosaicPosition: {x: 1055, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Button No
+    spriteName: Button No
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 158e20eca9c38ab459384f9e0aa9b494
+    layerID: 270
+    mosaicPosition: {x: 815, y: 1885}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Button Yes
+    spriteName: Button Yes
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7cac77b4584639845b551985a1011e16
+    layerID: 263
+    mosaicPosition: {x: 1196, y: 1885}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hud Coin icon
+    spriteName: Hud Coin icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6aaac617f6259c14a88ca24728a0cb4f
+    layerID: 216
+    mosaicPosition: {x: 1298, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hud Life icon
+    spriteName: Hud Life icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9cee7cd63ea6925478304e4c6a161880
+    layerID: 195
+    mosaicPosition: {x: 1881, y: 524}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: life bar
+    spriteName: life bar
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7d0552894f6aff04492aa8081fe8bdb2
+    layerID: 359
+    mosaicPosition: {x: 1964, y: 792}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: experience bar
+    spriteName: experience bar
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1135adf50aca2a34ba80c992cb835c48
+    layerID: 240
+    mosaicPosition: {x: 1670, y: 244}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hud Diamond icon
+    spriteName: Hud Diamond icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ac0d44c42011abd46871ffa5eb1c9e1e
+    layerID: 234
+    mosaicPosition: {x: 1176, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hud Experience icon
+    spriteName: Hud Experience icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 82742a22e87e19147ac7410e651dd3a1
+    layerID: 256
+    mosaicPosition: {x: 1910, y: 165}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hud
+    spriteName: Hud
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6c9648b5facc8e4498866db9c7adab67
+    layerID: 183
+    mosaicPosition: {x: 1218, y: 1542}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon back
+    spriteName: icon back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5c7a281759c2c004eb692698c8e5b2ca
+    layerID: 173
+    mosaicPosition: {x: 1700, y: 925}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: arrows
+    spriteName: arrows
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 506a9236adbd31343b409121d2e9aa75
+    layerID: 141
+    mosaicPosition: {x: 1218, y: 1384}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: toggle button background
+    spriteName: toggle button background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 77dfff69a9f80b743926624947d647ca
+    layerID: 82
+    mosaicPosition: {x: 4, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: button OFF kopiuj
+    spriteName: button OFF kopiuj
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a0079b5091ef99745a33b760ee5d83b1
+    layerID: 120
+    mosaicPosition: {x: 1577, y: 1885}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon background
+    spriteName: icon background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0f5d6d495d057e54aa506638d822fa88
+    layerID: 155
+    mosaicPosition: {x: 4, y: 2293}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: button board
+    spriteName: button board
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 620875959a5dcc841a622bac9db97b35
+    layerID: 149
+    mosaicPosition: {x: 1493, y: 716}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Main Label
+    spriteName: Main Label
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 17a003ba355a6cf499d56ad2643b0637
+    layerID: 168
+    mosaicPosition: {x: 4, y: 1384}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: button board
+    spriteName: button board
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8c3baa9bd5695864fbf0d8b5ac091b57
+    layerID: 161
+    mosaicPosition: {x: 1230, y: 1045}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: button OFF
+    spriteName: button OFF
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d76148748d5a3d24e99a532d9764f88b
+    layerID: 112
+    mosaicPosition: {x: 1230, y: 1254}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: OFF
+    spriteName: OFF
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b56aa2fbf1951f14f8256b21c29a1aaa
+    layerID: 97
+    mosaicPosition: {x: 1802, y: 1384}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ON
+    spriteName: ON
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1d5403713cc7e234c8f75695b6763d67
+    layerID: 88
+    mosaicPosition: {x: 1670, y: 1254}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 'Button X '
+    spriteName: 'Button X '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 47697315afc4ef94eba539862262be6f
+    layerID: 73
+    mosaicPosition: {x: 244, y: 2053}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: plank4
+    spriteName: plank4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ac26da0296b9f1b4a99ba6c1a65a8316
+    layerID: 57
+    mosaicPosition: {x: 4, y: 716}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: plank3
+    spriteName: plank3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b4d25f72d4571a145928e82d5ba7961c
+    layerID: 50
+    mosaicPosition: {x: 4, y: 1045}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: plank2
+    spriteName: plank2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d49ca2db83b819e4f851182a6dbe996c
+    layerID: 43
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: plank1
+    spriteName: plank1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 868e34e32f6e63d43bbbf586d4c8d245
+    layerID: 36
+    mosaicPosition: {x: 4, y: 344}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon
+    spriteName: icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e0075b83e3c25c5438b0fff2eda87ada
+    layerID: 26
+    mosaicPosition: {x: 477, y: 1726}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon background
+    spriteName: icon background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7d8c2d2f10f1df44abe5afc7f19d2fab
+    layerID: 21
+    mosaicPosition: {x: 1670, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon
+    spriteName: icon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3d8f18956dcb75a4796a71f1781beded
+    layerID: 13
+    mosaicPosition: {x: 1881, y: 344}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon background
+    spriteName: icon background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5baa5e132c507d143b13162150dd4733
+    layerID: 8
+    mosaicPosition: {x: 4, y: 2053}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: bg
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3cc43ee47c47baa41b98c5dbd3fb3c99
+    layerID: 63
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638918188583598840
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
