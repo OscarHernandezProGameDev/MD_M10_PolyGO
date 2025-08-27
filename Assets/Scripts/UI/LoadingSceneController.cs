@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,29 +10,27 @@ namespace PolyGo
 {
     public class LoadingSceneController : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private Image loadingIcon;
-        [SerializeField] private float rotationDuration = 1f;
-        [SerializeField] private float fadeDuration = 1f;
+        [SerializeField] private Slider sliderProgress;
+        [SerializeField] private TextMeshProUGUI textProgress;
+        [SerializeField] private float progressSpeed = 50f;
+        [SerializeField] private ScreenFader screenFader;
+        [SerializeField] private float delayWhileFading = 1;
         [SerializeField] private string sceneToLoad = "";
 
-        private Vector3 iconRotation = new Vector3(0, 0, -360f);
+        private float displayProgress = 0f;
 
         void Start()
         {
-            if (canvasGroup != null && loadingIcon != null)
-            {
-                canvasGroup.alpha = 1;
-                RotationIcon();
-                StartCoroutine(LoadSceneAsync());
-            }
+            sliderProgress.value = 0f;
+            textProgress.SetText("0%");
+
+            StartCoroutine(LoadSceneAsync());
         }
 
         // Nos aseguramos de que se detengan todas las animaciones al salir de la escena para Dotween no de errores
         void OnDestroy()
         {
-            if (canvasGroup != null || loadingIcon != null)
-                DOTween.KillAll();
+            DOTween.KillAll();
         }
 
         private IEnumerator LoadSceneAsync()
@@ -51,24 +50,29 @@ namespace PolyGo
 
             while (!asyncOperation.isDone)
             {
+                float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f) * 100;
+
+                displayProgress = Mathf.MoveTowards(displayProgress, progress, progressSpeed * Time.deltaTime);
+
+                sliderProgress.value = displayProgress;
+                textProgress.SetText($"{Mathf.RoundToInt(displayProgress)}%");
+
                 // Si la carga de la escena está completa, desvanecer la pantalla de carga
-                if (asyncOperation.progress >= 0.9f)
+                if (asyncOperation.progress >= 0.9f && displayProgress >= 100)
                 {
-                    yield return new WaitForSeconds(1f);
-                    canvasGroup.DOFade(0, fadeDuration).OnComplete(() =>
+                    if (screenFader != null)
                     {
+                        screenFader.FadeIn();
+
+                        yield return new WaitForSeconds(delayWhileFading);
+
                         DOTween.KillAll();
                         // Activa la escena precargada
                         asyncOperation.allowSceneActivation = true;
-                    });
+                    }
                 }
                 yield return null;
             }
-        }
-
-        private void RotationIcon()
-        {
-            loadingIcon.rectTransform.DORotate(iconRotation, rotationDuration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
         }
     }
 }
