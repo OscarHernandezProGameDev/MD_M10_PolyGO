@@ -7564,7 +7564,13 @@ MonoBehaviour:
   characterSelectionRightButton: {fileID: 524700601}
   titleSceneText: {fileID: 1919919901}
   currentCharacterNameText: {fileID: 1876658946}
-  selectedCharacter: 0
+  selectableCharacters:
+  - {fileID: 1843355589}
+  - {fileID: 2075700628}
+  - {fileID: 1654709373}
+  - {fileID: 2061943720}
+  - {fileID: 1873207716}
+  - {fileID: 465825121}
   selectableCharactersPosition: {fileID: 260204848}
 --- !u!1 &1221614864
 GameObject:

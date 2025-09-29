@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 namespace PolyGo
 {
-    public enum SelectableCharacters
-    {
-        Character1, Character2, Character3, Character4, Character5, Character6
-    }
-
     public class CharacterSelectionManager : MonoBehaviour
     {
         // Gestión de botones
@@ -25,15 +20,17 @@ namespace PolyGo
         [SerializeField] private TextMeshProUGUI currentCharacterNameText;
 
         // Selección de personaje
-        [SerializeField] private SelectableCharacters selectedCharacter = SelectableCharacters.Character1;
+        [SerializeField] private GameObject[] selectableCharacters;
         [SerializeField] private Transform selectableCharactersPosition;
 
         private int spaceBetweenCharacters = 5;
+        private int selectedCharacter;
+        private string selectedCharacterKey = "SelectedCharacter";
 
         public void ConfirmCharacter()
         {
             // Guardar el personaje seleccionado en PlayerPrefs
-            PlayerPrefs.SetInt("SelectedCharacter", (int)selectedCharacter);
+            PlayerPrefs.SetInt("SelectedCharacter", selectedCharacter);
             PlayerPrefs.Save();
 
             // Desactivar el botón de confirmar el personaje
@@ -45,7 +42,7 @@ namespace PolyGo
 
         public void CharSelectionLeft()
         {
-            if (selectedCharacter > SelectableCharacters.Character1)
+            if (selectedCharacter > 0)
             {
                 selectedCharacter--;
                 UpdateCharacterPosition();
@@ -55,7 +52,7 @@ namespace PolyGo
 
         public void CharSelectionRight()
         {
-            if (selectedCharacter < SelectableCharacters.Character6)
+            if (selectedCharacter < selectableCharacters.Length - 1)
             {
                 selectedCharacter++;
                 UpdateCharacterPosition();
@@ -65,8 +62,8 @@ namespace PolyGo
 
         void Start()
         {
-            // Tome el valor de la selección de personaje de PlayerPrefs, si no existe, establezca el personaje predeterminado Character1
-            selectedCharacter = (SelectableCharacters)PlayerPrefs.GetInt("SelectedCharacter", (int)SelectableCharacters.Character1);
+            // Tome el valor de la selección de personaje de PlayerPrefs, si no existe, establezca el personaje predeterminado Character1 (con indice 0)
+            selectedCharacter = PlayerPrefs.GetInt(selectedCharacterKey, 0);
 
             // desactivar el botón de selección de nível hasta que confirmeros personaje
             selectLevelButton.gameObject.SetActive(false);
@@ -78,7 +75,7 @@ namespace PolyGo
         private void UpdateCharacterPosition()
         {
             // Calcula la nueva en X depedendiendo del personaje seleccionado
-            float newXPosition = -(int)selectedCharacter * spaceBetweenCharacters;
+            float newXPosition = -selectedCharacter * spaceBetweenCharacters;
 
             // Mueve el GO de "selectableCharactersPosition" hasta la nueva posición
             selectableCharactersPosition.DOLocalMoveX(newXPosition, 0.5f).SetEase(Ease.InOutQuad);
@@ -87,7 +84,7 @@ namespace PolyGo
         private void UpdateCharacterName()
         {
             // Actualiza los nombres de los personajes usando el enumerado "selectedCharacter"
-            currentCharacterNameText.text = selectedCharacter.ToString();
+            currentCharacterNameText.text = selectableCharacters[selectedCharacter].name;
         }
     }
 }

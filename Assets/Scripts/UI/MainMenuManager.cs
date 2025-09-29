@@ -9,9 +9,30 @@ namespace PolyGo
 {
     public class MainMenuManager : MonoBehaviour
     {
-        // Controlar el personaje que se muestra en el menú principal
-        // Boton de quit
+        [SerializeField] GameObject[] characters;
+
         // Otros
+
+        private int selectedCharacter;
+        private string selectedCharacterKey = "SelectedCharacter";
+
+        void Start()
+        {
+            // Tome el valor de la selección de personaje de PlayerPrefs, si no existe, establezca el personaje predeterminado Character1 (con indice 0)
+            selectedCharacter = PlayerPrefs.GetInt(selectedCharacterKey, 0);
+            ShowSelectedCharacter();
+        }
+
+        private void ShowSelectedCharacter()
+        {
+            for (int i = 0; i < characters.Length; i++)
+            {
+                if (i == selectedCharacter)
+                    characters[i].SetActive(true);
+                else
+                    characters[i].SetActive(false);
+            }
+        }
 
         public void QuitGame()
         {
