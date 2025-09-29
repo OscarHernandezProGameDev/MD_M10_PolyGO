@@ -12,5 +12,10 @@ namespace PolyGo
         // Controlar el personaje que se muestra en el menú principal
         // Boton de quit
         // Otros
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }

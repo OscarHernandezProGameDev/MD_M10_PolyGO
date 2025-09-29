@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2195846692959303908}
   - component: {fileID: 2837232987786678659}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Barbarian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
