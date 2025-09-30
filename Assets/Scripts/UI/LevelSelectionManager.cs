@@ -8,39 +8,39 @@ using UnityEngine.UI;
 
 namespace PolyGo
 {
-    public enum Levels
-    {
-        Level1, Level2, Level3, Level4, Level5
-    }
-
     public class LevelSelectionManager : MonoBehaviour
     {
-        // Gestión de botones
+        [Header("Buttons")]
         [SerializeField] private Button playLevelButton;
         [SerializeField] private Button levelSelectionLeftButton;
         [SerializeField] private Button levelSelectionRightButton;
 
-        // Gestión de textos
+        [Header("Texts")]
         [SerializeField] private TextMeshProUGUI titleSceneText;
         [SerializeField] private TextMeshProUGUI currentLevelNameText;
 
         // Selección de nivel
-        [SerializeField] private Levels selectedLevel = Levels.Level1;
+        [Header("Level Selection")]
+        [SerializeField] private GameObject[] selectableLevels;
         [SerializeField] private Transform selectableLevelsPosition;
+
+        [Header("Scene Loader")]
         [SerializeField] private SceneLoader sceneLoader;
 
-        private int spaceBetweenCharacters = 5;
+        private int selectedLevel = 0;
         private int highestUnlockedLevel = 0;
+        private int spaceBetweenCharacters = 5;
+        private string highestUnlockedKey = "HighestUnlockedLevel";
 
         public void PlayLevel()
         {
-            sceneLoader.LoadScene(selectedLevel.ToString());
+            sceneLoader.LoadScene(selectableLevels[selectedLevel - 1].name);
         }
 
         // Métodos para ir a traves de los niveles de las fechas
         public void LevelSelectionLeft()
         {
-            if (selectedLevel > Levels.Level1)
+            if (selectedLevel > 1)
             {
                 selectedLevel--;
                 UpdateLevelPosition();
@@ -51,7 +51,7 @@ namespace PolyGo
 
         public void LevelSelectionRight()
         {
-            if (selectedLevel < Levels.Level5)
+            if (selectedLevel < selectableLevels.Length)
             {
                 selectedLevel++;
                 UpdateLevelPosition();
@@ -63,7 +63,8 @@ namespace PolyGo
         private void Start()
         {
             // Toma el nível mas alto debloqueado desde PlayPrefs, si es nulo configuralo al nível 1
-            highestUnlockedLevel = PlayerPrefs.GetInt("HighestUnlockedLevel", 1);
+            highestUnlockedLevel = PlayerPrefs.GetInt(highestUnlockedKey, 1);
+            selectedLevel = highestUnlockedLevel;
 
             UpdateLevelPosition();
             UpdateLevelName();
@@ -72,20 +73,20 @@ namespace PolyGo
 
         private void UpdateLevelPosition()
         {
-            float newXPosition = -(int)selectedLevel * spaceBetweenCharacters;
+            float newXPosition = -(selectedLevel - 1) * spaceBetweenCharacters;
 
             selectableLevelsPosition.DOLocalMoveX(newXPosition, 0.5f).SetEase(Ease.InOutQuad);
         }
 
         private void UpdateLevelName()
         {
-            currentLevelNameText.text = selectedLevel.ToString();
+            currentLevelNameText.text = selectableLevels[selectedLevel - 1].name;
         }
 
         private void UpdatePlayButtonState()
         {
             // Comprueba si el nível seleccionado esta desbloqueado y activa/desactiva el playbutton en consecuencia
-            if ((int)selectedLevel + 1 <= highestUnlockedLevel)
+            if (selectedLevel <= highestUnlockedLevel)
                 playLevelButton.interactable = true;
             else
                 playLevelButton.interactable = false;
