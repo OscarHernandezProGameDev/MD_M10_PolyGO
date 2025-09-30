@@ -11,17 +11,23 @@ namespace PolyGo
     {
         [SerializeField] private Button applyButton;
 
-        [Header("Sound UI")]
+        [Header("Slider Sound UI")]
         [SerializeField] private Slider generalVolumeSlider;
         [SerializeField] private Slider musicVolumeSlider;
         [SerializeField] private Slider soundFXSlider;
-        [SerializeField] private Toggle musicToggle;
-        [SerializeField] private Toggle soundFXToggle;
 
         [Header("Text Buttons Panel")]
         [SerializeField] private TextMeshProUGUI textButtonPanelAudio;
         [SerializeField] private TextMeshProUGUI textButtonPanelVideo;
         [SerializeField] private TextMeshProUGUI textButtonPanelControls;
+
+        [Header("Toggle Sound UI")]
+        [SerializeField] private Toggle musicToggle;
+        [SerializeField] private Toggle soundFXToggle;
+        [SerializeField] private Image toggleImage;
+        [SerializeField] private TextMeshProUGUI toggleText;
+        [SerializeField] private Sprite spriteOn;
+        [SerializeField] private Sprite spriteOff;
 
         [Header("Audio Mixer")]
         [SerializeField] private AudioMixer myAudioMixer;
@@ -72,9 +78,17 @@ namespace PolyGo
         public void ToggleMusicOn(bool isOn)
         {
             if (isOn)
+            {
                 myAudioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
+                toggleImage.sprite = spriteOn;
+                toggleText.text = "ON";
+            }
             else
+            {
                 myAudioMixer.SetFloat("MusicVolume", -80f);
+                toggleImage.sprite = spriteOff;
+                toggleText.text = "OFF";
+            }
 
             ActivateApplyButton();
         }

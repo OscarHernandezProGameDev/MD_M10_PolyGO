@@ -325,7 +325,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 410, y: 1885}
     spritePosition: {x: 0, y: 25}
-  - name: Slider
+  - name: Slider_On
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -334,7 +334,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 1493
       y: 925
-      width: 199
+      width: 97
       height: 101
     spriteID: ab1b8cb06d147fb47969cef71d392f83
     spriteBone: []
@@ -598,17 +598,17 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 1910, y: 165}
     spritePosition: {x: 1919, y: 1524}
-  - name: Hud
+  - name: Bar
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 13, y: 14, z: 14, w: 12}
     rect:
       serializedVersion: 2
-      x: 1218
-      y: 1542
-      width: 597
-      height: 136
+      x: 1338
+      y: 1575
+      width: 477
+      height: 103
     spriteID: 6c9648b5facc8e4498866db9c7adab67
     spriteBone: []
     spriteOutline: []
@@ -707,7 +707,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 51, y: 24, z: 62, w: 25}
     rect:
       serializedVersion: 2
       x: 4
@@ -1039,6 +1039,27 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 2053}
     spritePosition: {x: 1598, y: 1813}
+  - name: Slider_Off
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1595
+      y: 925
+      width: 97
+      height: 101
+    spriteID: 7fb0ed72319db584baf8f66bdb5eba44
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1595, y: 925}
+    spritePosition: {x: 0, y: 0}
   characterData:
     bones: []
     parts: []
