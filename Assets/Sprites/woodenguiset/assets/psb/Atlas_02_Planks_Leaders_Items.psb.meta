@@ -346,7 +346,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 348, y: 1858}
     spritePosition: {x: 8, y: 1922}
-  - name: Planks
+  - name: Plank_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -354,9 +354,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 1441
       width: 1949
-      height: 1846
+      height: 409
     spriteID: d0331984cf034c14bb55abe806e79076
     spriteBone: []
     spriteOutline: []
@@ -367,6 +367,90 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 4, y: 6}
+  - name: Plank_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1063
+      width: 1967
+      height: 374
+    spriteID: cff1c24a35877044dbf7384461f9443b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1063}
+    spritePosition: {x: 0, y: 0}
+  - name: Plank_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 675
+      width: 1967
+      height: 381
+    spriteID: 63e675ac781d8c2478d78cb55837f8be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 675}
+    spritePosition: {x: 0, y: 0}
+  - name: Plank_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 342
+      width: 1967
+      height: 337
+    spriteID: 397b29f088ca21241a22ded3478c692c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 342}
+    spritePosition: {x: 0, y: 0}
+  - name: Plank_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2
+      y: 0
+      width: 1967
+      height: 337
+    spriteID: 6b73b974fa3a8e04ba13d846af854e63
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2, y: 0}
+    spritePosition: {x: 0, y: 0}
   characterData:
     bones: []
     parts: []

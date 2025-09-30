@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -17,7 +18,16 @@ namespace PolyGo
         [SerializeField] private Toggle musicToggle;
         [SerializeField] private Toggle soundFXToggle;
 
+        [Header("Text Buttons Panel")]
+        [SerializeField] private TextMeshProUGUI textButtonPanelAudio;
+        [SerializeField] private TextMeshProUGUI textButtonPanelVideo;
+        [SerializeField] private TextMeshProUGUI textButtonPanelControls;
+
+        [Header("Audio Mixer")]
         [SerializeField] private AudioMixer myAudioMixer;
+
+        private Color normalColorButtonPanel;
+        private Color selectedColorButtonPanel = Color.white;
 
         // Gestión opciones de vídeo
 
@@ -82,6 +92,9 @@ namespace PolyGo
         {
             LoadSettings();
 
+            normalColorButtonPanel = textButtonPanelAudio.color;
+            ChangeColorTextButtonPanel(textButtonPanelAudio);
+
             generalVolumeSlider.onValueChanged.AddListener(SetGeneralVolume);
             musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
             soundFXSlider.onValueChanged.AddListener(SetSFXVolume);
@@ -132,6 +145,15 @@ namespace PolyGo
         {
             if (!applyButton.gameObject.activeSelf)
                 applyButton.gameObject.SetActive(true);
+        }
+
+        public void ChangeColorTextButtonPanel(TextMeshProUGUI clickedText)
+        {
+            textButtonPanelAudio.color = normalColorButtonPanel;
+            textButtonPanelVideo.color = normalColorButtonPanel;
+            textButtonPanelControls.color = normalColorButtonPanel;
+
+            clickedText.color = selectedColorButtonPanel;
         }
     }
 }
