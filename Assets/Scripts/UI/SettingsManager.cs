@@ -24,8 +24,10 @@ namespace PolyGo
         [Header("Toggle Sound UI")]
         [SerializeField] private Toggle musicToggle;
         [SerializeField] private Toggle soundFXToggle;
-        [SerializeField] private Image toggleImage;
-        [SerializeField] private TextMeshProUGUI toggleText;
+        [SerializeField] private Image toggleMusicImage;
+        [SerializeField] private Image toggleSoundFXImage;
+        [SerializeField] private TextMeshProUGUI toggleMusicText;
+        [SerializeField] private TextMeshProUGUI toggleSoundFXText;
         [SerializeField] private Sprite spriteOn;
         [SerializeField] private Sprite spriteOff;
 
@@ -35,6 +37,8 @@ namespace PolyGo
         private Color normalColorButtonPanel;
         private Color selectedColorButtonPanel = Color.white;
 
+        private float onPositionX = 8;
+        private float offPositionX = -8;
         // Gestión opciones de vídeo
 
         // Mostrar controles en UI
@@ -80,14 +84,16 @@ namespace PolyGo
             if (isOn)
             {
                 myAudioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
-                toggleImage.sprite = spriteOn;
-                toggleText.text = "ON";
+                toggleMusicImage.sprite = spriteOn;
+                toggleMusicText.text = "ON";
+                MoveToggleImage(onPositionX, toggleMusicImage);
             }
             else
             {
                 myAudioMixer.SetFloat("MusicVolume", -80f);
-                toggleImage.sprite = spriteOff;
-                toggleText.text = "OFF";
+                toggleMusicImage.sprite = spriteOff;
+                toggleMusicText.text = "OFF";
+                MoveToggleImage(offPositionX, toggleMusicImage);
             }
 
             ActivateApplyButton();
@@ -96,11 +102,30 @@ namespace PolyGo
         public void ToggleSFXOn(bool isOn)
         {
             if (isOn)
+            {
                 myAudioMixer.SetFloat("SFXVolume", Mathf.Log10(soundFXSlider.value) * 20);
+                toggleSoundFXImage.sprite = spriteOn;
+                toggleSoundFXText.text = "ON";
+                MoveToggleImage(onPositionX, toggleSoundFXImage);
+            }
             else
+            {
                 myAudioMixer.SetFloat("SFXVolume", -80f);
+                toggleSoundFXImage.sprite = spriteOff;
+                toggleSoundFXText.text = "OFF";
+                MoveToggleImage(offPositionX, toggleSoundFXImage);
+            }
 
             ActivateApplyButton();
+        }
+
+        public void ChangeColorTextButtonPanel(TextMeshProUGUI clickedText)
+        {
+            textButtonPanelAudio.color = normalColorButtonPanel;
+            textButtonPanelVideo.color = normalColorButtonPanel;
+            textButtonPanelControls.color = normalColorButtonPanel;
+
+            clickedText.color = selectedColorButtonPanel;
         }
         private void Start()
         {
@@ -152,6 +177,8 @@ namespace PolyGo
             ToggleMusicOn(musicToggle.isOn);
             ToggleSFXOn(soundFXToggle.isOn);
 
+            Debug.Log("Settings loaded!!!");
+
             applyButton.gameObject.SetActive(false);
         }
 
@@ -161,13 +188,13 @@ namespace PolyGo
                 applyButton.gameObject.SetActive(true);
         }
 
-        public void ChangeColorTextButtonPanel(TextMeshProUGUI clickedText)
+        private void MoveToggleImage(float positionX, Image image)
         {
-            textButtonPanelAudio.color = normalColorButtonPanel;
-            textButtonPanelVideo.color = normalColorButtonPanel;
-            textButtonPanelControls.color = normalColorButtonPanel;
+            RectTransform rectTransform = image.GetComponent<RectTransform>();
+            Vector2 anchoredPosition = rectTransform.anchoredPosition;
 
-            clickedText.color = selectedColorButtonPanel;
+            anchoredPosition.x = positionX;
+            rectTransform.anchoredPosition = anchoredPosition;
         }
     }
 }
