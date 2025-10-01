@@ -8322,6 +8322,11 @@ MonoBehaviour:
     type: 3}
   spriteOff: {fileID: -7405865638332423695, guid: 337fe37584eb9984ab4124e0439ed9db,
     type: 3}
+  resolutionDropdown: {fileID: 605958962}
+  qualityDropdown: {fileID: 1592754160}
+  fullscreenFXToggle: {fileID: 1014921845}
+  toggleFullscreenImage: {fileID: 603231560}
+  toggleFullscreenText: {fileID: 199316803}
   myAudioMixer: {fileID: 24100000, guid: b7e12319d2204804d8ef293b6f7f11a8, type: 2}
 --- !u!1 &1222504380
 GameObject:
