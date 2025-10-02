@@ -8306,28 +8306,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applyButton: {fileID: 2074454178}
-  generalVolumeSlider: {fileID: 1196009816}
-  musicVolumeSlider: {fileID: 1653171469}
-  soundFXSlider: {fileID: 1359226357}
   textButtonPanelAudio: {fileID: 1163382179}
   textButtonPanelVideo: {fileID: 1908852519}
   textButtonPanelControls: {fileID: 342874965}
+  generalVolumeSlider: {fileID: 1196009816}
+  musicVolumeSlider: {fileID: 1653171469}
+  soundFXSlider: {fileID: 1359226357}
   musicToggle: {fileID: 2046533184}
   soundFXToggle: {fileID: 505252219}
-  toggleMusicImage: {fileID: 1319391449}
-  toggleSoundFXImage: {fileID: 743234987}
-  toggleMusicText: {fileID: 612385401}
-  toggleSoundFXText: {fileID: 1016625852}
+  resolutionDropdown: {fileID: 605958962}
+  qualityDropdown: {fileID: 1592754160}
+  fullscreenFXToggle: {fileID: 1014921845}
+  shadowQualityDropdown: {fileID: 1108267612}
+  shadowsToggle: {fileID: 1433713628}
+  lightingQualityDropdown: {fileID: 863203037}
+  lightingSettingsAssets:
+  - {fileID: 4890085278179872738, guid: a608480840feb5c4e82577c504d88888, type: 2}
+  - {fileID: 4890085278179872738, guid: fe9e37280147ea84f870b6feb89821bd, type: 2}
+  myAudioMixer: {fileID: 24100000, guid: b7e12319d2204804d8ef293b6f7f11a8, type: 2}
   spriteOn: {fileID: -4175358932378009253, guid: 337fe37584eb9984ab4124e0439ed9db,
     type: 3}
   spriteOff: {fileID: -7405865638332423695, guid: 337fe37584eb9984ab4124e0439ed9db,
     type: 3}
-  resolutionDropdown: {fileID: 605958962}
-  qualityDropdown: {fileID: 1592754160}
-  fullscreenFXToggle: {fileID: 1014921845}
+  toggleMusicImage: {fileID: 1319391449}
+  toggleMusicText: {fileID: 612385401}
+  toggleSoundFXImage: {fileID: 743234987}
+  toggleSoundFXText: {fileID: 1016625852}
   toggleFullscreenImage: {fileID: 603231560}
   toggleFullscreenText: {fileID: 199316803}
-  myAudioMixer: {fileID: 24100000, guid: b7e12319d2204804d8ef293b6f7f11a8, type: 2}
+  toggleShadowsImage: {fileID: 1654215833}
+  toggleShadowsText: {fileID: 1169387276}
 --- !u!1 &1222504380
 GameObject:
   m_ObjectHideFlags: 0
@@ -12207,8 +12215,8 @@ RectTransform:
   - {fileID: 789537859}
   - {fileID: 9573576}
   - {fileID: 287183943}
-  - {fileID: 1453587936}
   - {fileID: 1228079036}
+  - {fileID: 1453587936}
   - {fileID: 1190772950}
   m_Father: {fileID: 378582962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13055,7 +13063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shadows On/Off
+  m_text: Shadows
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 442ec5a80ea04e44e98f901b65fc89b2, type: 2}
   m_sharedMaterial: {fileID: 6580240970414682418, guid: 442ec5a80ea04e44e98f901b65fc89b2,

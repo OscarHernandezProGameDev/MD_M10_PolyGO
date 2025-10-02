@@ -29,6 +29,10 @@ namespace PolyGo
         [SerializeField] private TMP_Dropdown resolutionDropdown;
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private Toggle fullscreenFXToggle;
+        [SerializeField] private TMP_Dropdown shadowQualityDropdown;
+        [SerializeField] private Toggle shadowsToggle;
+        [SerializeField] private TMP_Dropdown lightingQualityDropdown;
+        [SerializeField] private LightingSettings[] lightingSettingsAssets;
 
         [Header("Audio Mixer")]
         [SerializeField] private AudioMixer myAudioMixer;
@@ -43,6 +47,8 @@ namespace PolyGo
         [SerializeField] private TextMeshProUGUI toggleSoundFXText;
         [SerializeField] private Image toggleFullscreenImage;
         [SerializeField] private TextMeshProUGUI toggleFullscreenText;
+        [SerializeField] private Image toggleShadowsImage;
+        [SerializeField] private TextMeshProUGUI toggleShadowsText;
 
         private Color normalColorButtonPanel;
         private Color selectedColorButtonPanel = Color.white;
@@ -52,6 +58,8 @@ namespace PolyGo
 
         private Resolution[] availableResolutions;
         private int currentResolutionIndex = 0;
+
+        private ShadowQuality lastShadowQuality = ShadowQuality.All;
 
         // Gestión opciones de vídeo
 
@@ -77,7 +85,11 @@ namespace PolyGo
             // Video
             InitializeResolutionOptions();
             InitializeQualityOptions();
-            fullscreenFXToggle.onValueChanged.AddListener(SetFullscreen); // Add List
+            InitializeShadowQualityOptions();
+            InitializeLightingQualityOptions();
+
+            fullscreenFXToggle.onValueChanged.AddListener(SetFullscreen);
+            shadowsToggle.onValueChanged.AddListener(SetShadows);
         }
 
         #region Music Options
@@ -194,6 +206,28 @@ namespace PolyGo
             qualityDropdown.onValueChanged.AddListener(SetQuality);
         }
 
+        private void InitializeShadowQualityOptions()
+        {
+            shadowQualityDropdown.ClearOptions();
+
+            List<string> options = new List<string>() { "Low", "Medium", "High" };
+
+            shadowQualityDropdown.AddOptions(options);
+            shadowQualityDropdown.value = (int)QualitySettings.shadows;
+            shadowQualityDropdown.onValueChanged.AddListener(SetShadowQuality);
+        }
+
+        private void InitializeLightingQualityOptions()
+        {
+            lightingQualityDropdown.ClearOptions();
+
+            List<string> options = new List<string>() { "Low", "Medium", "High" };
+
+            lightingQualityDropdown.AddOptions(options);
+            lightingQualityDropdown.value = 2;
+            lightingQualityDropdown.onValueChanged.AddListener(SetLightingQuality);
+        }
+
         public void SetResolution(int index)
         {
             if (index < availableResolutions.Length)
@@ -219,6 +253,95 @@ namespace PolyGo
             QualitySettings.SetQualityLevel(index); // Set Quality Sett
 
             Debug.Log($"Quality changed to {QualitySettings.GetQualityLevel()}"); // D
+        }
+
+        public void SetShadowQuality(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    QualitySettings.shadows = ShadowQuality.HardOnly;
+                    lastShadowQuality = ShadowQuality.HardOnly;
+                    //Debug.Log("Calidad de las sombras establecida en baja");
+                    break;
+                case 1:
+                    QualitySettings.shadows = ShadowQuality.All;
+                    QualitySettings.shadowResolution = ShadowResolution.Medium;
+                    lastShadowQuality = ShadowQuality.All;
+                    //Debug.Log("Calidad de las sombras establecida en media");
+                    break;
+                case 2:
+                    QualitySettings.shadows = ShadowQuality.All;
+                    QualitySettings.shadowResolution = ShadowResolution.High;
+                    lastShadowQuality = ShadowQuality.All;
+                    //Debug.Log("Calidad de las sombras establecida en alta");
+                    break;
+            }
+        }
+
+        public void SetShadows(bool enabledShadow)
+        {
+            if (enabledShadow)
+            {
+                QualitySettings.shadows = lastShadowQuality;
+                shadowQualityDropdown.interactable = true;
+
+                toggleShadowsImage.sprite = spriteOn;
+                toggleShadowsText.text = "ON";
+                MoveToggleImage(onPositionX, toggleShadowsImage);
+
+                //Debug.Log($"Sombras habilitadas a : {lastShadowQuality}");
+            }
+            else
+            {
+                lastShadowQuality = QualitySettings.shadows;
+                QualitySettings.shadows = ShadowQuality.Disable;
+                shadowQualityDropdown.interactable = false;
+
+                toggleShadowsImage.sprite = spriteOff;
+                toggleShadowsText.text = "OFF";
+                MoveToggleImage(offPositionX, toggleShadowsImage);
+
+                //Debug.Log("Sombras desactivadas");
+            }
+        }
+
+        public void SetLightingQuality(int index)
+        {
+            if (lightingSettingsAssets == null || lightingSettingsAssets.Length == 0)
+            {
+                Debug.Log("No hay ningún lighing asset asignado");
+                return;
+            }
+
+            foreach (var lightingSettings in lightingSettingsAssets)
+            {
+                if (!lightingSettings)
+                    continue;
+
+                switch (index)
+                {
+                    case 0: //Low Quality
+                        lightingSettings.lightmapResolution = 10f;
+                        lightingSettings.maxBounces = 0;
+                        lightingSettings.lightmapMaxSize = 512;
+                        QualitySettings.pixelLightCount = 1;
+                        break;
+                    case 1: //Medium Quality
+                        lightingSettings.lightmapResolution = 20f;
+                        lightingSettings.maxBounces = 1;
+                        lightingSettings.lightmapMaxSize = 1024;
+                        QualitySettings.pixelLightCount = 2;
+                        break;
+                    case 2: //High Quality
+                        lightingSettings.lightmapResolution = 40f;
+                        lightingSettings.maxBounces = 2;
+                        lightingSettings.lightmapMaxSize = 2048;
+                        QualitySettings.pixelLightCount = 4;
+                        break;
+                }
+                //Debug.Log($"Lighting quality set to {index} para {lightingSettings.name}");
+            }
         }
 
         public void SetFullscreen(bool isFullscrren)
