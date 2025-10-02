@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,10 @@ namespace PolyGo
 {
     public class SettingsManager : MonoBehaviour
     {
+        [Header("Apply Changes")]
         [SerializeField] private Button applyButton;
+        [SerializeField] private GameObject unSavedChangesPanel;
+        [SerializeField] private CanvasGroup unSavedChangesCanvasGroup;
 
         [Header("Text Buttons Panel")]
         [SerializeField] private TextMeshProUGUI textButtonPanelAudio;
@@ -49,6 +53,10 @@ namespace PolyGo
         [SerializeField] private TextMeshProUGUI toggleFullscreenText;
         [SerializeField] private Image toggleShadowsImage;
         [SerializeField] private TextMeshProUGUI toggleShadowsText;
+
+        public bool UnAppliedChanges { get; private set; }
+
+        private Action onConfirmAction;
 
         private Color normalColorButtonPanel;
         private Color selectedColorButtonPanel = Color.white;
@@ -386,7 +394,10 @@ namespace PolyGo
         private void ActivateApplyButton()
         {
             if (!applyButton.gameObject.activeSelf)
+            {
                 applyButton.gameObject.SetActive(true);
+                UnAppliedChanges = true;
+            }
         }
 
         private void MoveToggleImage(float positionX, Image image)
@@ -422,6 +433,7 @@ namespace PolyGo
             Debug.Log("Settings saved!!!");
 
             applyButton.gameObject.SetActive(false);
+            UnAppliedChanges = false;
         }
 
         private void LoadSettings()
@@ -470,7 +482,67 @@ namespace PolyGo
             Debug.Log("Settings loaded!!!");
 
             applyButton.gameObject.SetActive(false);
+            UnAppliedChanges = false;
         }
-        #endregion        
+
+        public void ShowUnsavedChangesPanel(Action confirmAction)
+        {
+            onConfirmAction = confirmAction;
+
+            if (unSavedChangesPanel)
+            {
+                unSavedChangesPanel.SetActive(true);
+
+                if (unSavedChangesCanvasGroup)
+                {
+                    unSavedChangesCanvasGroup.alpha = 0f;
+                    unSavedChangesCanvasGroup.DOFade(1f, 0.2f);
+                }
+            }
+        }
+
+        public void HideUnsavedChangesPanel()
+        {
+            if (unSavedChangesPanel)
+            {
+                if (unSavedChangesCanvasGroup)
+                {
+                    unSavedChangesCanvasGroup.DOFade(0f, 0.2f).OnComplete(() => unSavedChangesPanel.SetActive(false));
+                }
+                else
+                    unSavedChangesPanel.SetActive(false);
+            }
+
+        }
+
+        public void ConfirmSaveAndProceed()
+        {
+            SaveAllSettings();
+            ProceedWithAction();
+        }
+
+        public void ConfirmDiscardAndProceed()
+        {
+            LoadSettings();
+            ProceedWithAction();
+        }
+
+        public void CancelUnsavedChanges()
+        {
+            HideUnsavedChangesPanel();
+        }
+
+        private void ProceedWithAction()
+        {
+            HideUnsavedChangesPanel();
+            if (onConfirmAction != null)
+            {
+                onConfirmAction.Invoke();
+                onConfirmAction = null;
+            }
+            else
+                Debug.LogWarning("onConfirmAction es nulo. No hay acción para ejecutar");
+        }
+        #endregion
     }
 }

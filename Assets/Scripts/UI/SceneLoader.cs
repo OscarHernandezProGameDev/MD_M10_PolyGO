@@ -10,6 +10,7 @@ namespace PolyGo
     {
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private float fadeDuration = 0.2f;
+        [SerializeField] private SettingsManager settingsManager;
 
         private void Start()
         {
@@ -17,6 +18,14 @@ namespace PolyGo
         }
 
         public void LoadScene(string sceneName)
+        {
+            if (settingsManager && settingsManager.UnAppliedChanges)
+                settingsManager.ShowUnsavedChangesPanel(() => ConfirmLoadScene(sceneName));
+            else
+                ConfirmLoadScene(sceneName);
+        }
+
+        private void ConfirmLoadScene(string sceneName)
         {
             SceneManagerController.Instance.SceneToLoad = sceneName;
             StartCoroutine(DoFadeAndLoadScene());
