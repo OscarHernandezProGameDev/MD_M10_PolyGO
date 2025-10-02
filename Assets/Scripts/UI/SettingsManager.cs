@@ -61,13 +61,16 @@ namespace PolyGo
 
         private ShadowQuality lastShadowQuality = ShadowQuality.All;
 
-        // Gestión opciones de vídeo
-
         // Mostrar controles en UI
         // => Info teclado + ratón / gamepad
         // => if (mobile)=> info controles táctiles
         private void Start()
         {
+            InitializeResolutionOptions();
+            InitializeQualityOptions();
+            InitializeShadowQualityOptions();
+            InitializeLightingQualityOptions();
+
             LoadSettings();
 
             normalColorButtonPanel = textButtonPanelAudio.color;
@@ -83,11 +86,6 @@ namespace PolyGo
             applyButton.onClick.AddListener(SaveAllSettings);
 
             // Video
-            InitializeResolutionOptions();
-            InitializeQualityOptions();
-            InitializeShadowQualityOptions();
-            InitializeLightingQualityOptions();
-
             fullscreenFXToggle.onValueChanged.AddListener(SetFullscreen);
             shadowsToggle.onValueChanged.AddListener(SetShadows);
         }
@@ -246,13 +244,39 @@ namespace PolyGo
 
                 //Debug.Log($"Resolution autodetect changed to {resolution.width} x {resolution.height}"); // D
             }
+
+            ActivateApplyButton();
         }
 
         public void SetQuality(int index)
         {
             QualitySettings.SetQualityLevel(index); // Set Quality Sett
 
-            Debug.Log($"Quality changed to {QualitySettings.GetQualityLevel()}"); // D
+            //Debug.Log($"Quality changed to {QualitySettings.GetQualityLevel()}");
+
+            ActivateApplyButton();
+        }
+
+        public void SetFullscreen(bool isFullscrren)
+        {
+            Screen.fullScreen = isFullscrren;
+            if (isFullscrren)
+            {
+                //myAudioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
+                toggleFullscreenImage.sprite = spriteOn;
+                toggleFullscreenText.text = "ON";
+                MoveToggleImage(onPositionX, toggleFullscreenImage);
+            }
+            else
+            {
+                //myAudioMixer.SetFloat("MusicVolume", -80f);
+                toggleFullscreenImage.sprite = spriteOff;
+                toggleFullscreenText.text = "OFF";
+                MoveToggleImage(offPositionX, toggleFullscreenImage);
+            }
+
+            //Debug.Log($"Fullscreen changed to {isFullscrren}");
+            ActivateApplyButton();
         }
 
         public void SetShadowQuality(int index)
@@ -277,6 +301,8 @@ namespace PolyGo
                     //Debug.Log("Calidad de las sombras establecida en alta");
                     break;
             }
+
+            ActivateApplyButton();
         }
 
         public void SetShadows(bool enabledShadow)
@@ -304,6 +330,8 @@ namespace PolyGo
 
                 //Debug.Log("Sombras desactivadas");
             }
+
+            ActivateApplyButton();
         }
 
         public void SetLightingQuality(int index)
@@ -342,27 +370,8 @@ namespace PolyGo
                 }
                 //Debug.Log($"Lighting quality set to {index} para {lightingSettings.name}");
             }
-        }
 
-        public void SetFullscreen(bool isFullscrren)
-        {
-            Screen.fullScreen = isFullscrren;
-            if (isFullscrren)
-            {
-                //myAudioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
-                toggleFullscreenImage.sprite = spriteOn;
-                toggleFullscreenText.text = "ON";
-                MoveToggleImage(onPositionX, toggleFullscreenImage);
-            }
-            else
-            {
-                //myAudioMixer.SetFloat("MusicVolume", -80f);
-                toggleFullscreenImage.sprite = spriteOff;
-                toggleFullscreenText.text = "OFF";
-                MoveToggleImage(offPositionX, toggleFullscreenImage);
-            }
-
-            //Debug.Log($"Fullscreen changed to {isFullscrren}");
+            ActivateApplyButton();
         }
 
         #region UI Options
@@ -401,6 +410,14 @@ namespace PolyGo
             PlayerPrefs.SetInt("MusicOn", musicToggle.isOn ? 1 : 0);
             PlayerPrefs.SetInt("SFXOn", soundFXToggle.isOn ? 1 : 0);
 
+            //Video data a guardar
+            PlayerPrefs.SetInt("ResolutionIndex", resolutionDropdown.value);
+            PlayerPrefs.SetInt("QualityIndex", qualityDropdown.value);
+            PlayerPrefs.SetInt("FullscreenOn", fullscreenFXToggle.isOn ? 1 : 0);
+            PlayerPrefs.SetInt("ShadowsOn", shadowsToggle.isOn ? 1 : 0);
+            PlayerPrefs.SetInt("ShadowQualityIndex", shadowQualityDropdown.value);
+            PlayerPrefs.SetInt("LightingQualityIndex", lightingQualityDropdown.value);
+
             PlayerPrefs.Save();
             Debug.Log("Settings saved!!!");
 
@@ -409,7 +426,7 @@ namespace PolyGo
 
         private void LoadSettings()
         {
-            // Obtener los valores guardados
+            // Obtener los valores guardados del audio
             generalVolumeSlider.value = PlayerPrefs.GetFloat("GeneralVolume", 1f);
             musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
             soundFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
@@ -417,12 +434,38 @@ namespace PolyGo
             musicToggle.isOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
             soundFXToggle.isOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
 
+            // Aplicar los valores cargados del audiop
             SetGeneralVolume(generalVolumeSlider.value);
             SetMusicVolume(musicVolumeSlider.value);
             SetSFXVolume(soundFXSlider.value);
 
             ToggleMusicOn(musicToggle.isOn);
             ToggleSFXOn(soundFXToggle.isOn);
+
+            // Obtener los valores guardados del video y los aplicamos
+            int resolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", currentResolutionIndex);
+            resolutionDropdown.value = resolutionIndex;
+            SetResolution(resolutionIndex);
+
+            int qualityIndex = PlayerPrefs.GetInt("QualityIndex", QualitySettings.GetQualityLevel());
+            qualityDropdown.value = qualityIndex;
+            SetQuality(qualityIndex);
+
+            bool isFullscreen = PlayerPrefs.GetInt("FullscreenOn", Screen.fullScreen ? 1 : 0) == 1;
+            fullscreenFXToggle.isOn = isFullscreen;
+            SetFullscreen(isFullscreen);
+
+            bool shadowsEnabled = PlayerPrefs.GetInt("ShadowsOn", QualitySettings.shadows != ShadowQuality.Disable ? 1 : 0) == 1;
+            shadowsToggle.isOn = shadowsEnabled;
+            SetShadows(shadowsEnabled);
+
+            int shadowQualityIndex = PlayerPrefs.GetInt("ShadowQualityIndex", (int)QualitySettings.shadows);
+            shadowQualityDropdown.value = shadowQualityIndex;
+            SetShadowQuality(shadowQualityIndex);
+
+            int lightingQualityIndex = PlayerPrefs.GetInt("LightingQualityIndex", 2);
+            lightingQualityDropdown.value = lightingQualityIndex;
+            SetLightingQuality(lightingQualityIndex);
 
             Debug.Log("Settings loaded!!!");
 
