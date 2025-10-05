@@ -1,14 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 namespace PolyGo.Player
 {
     public class GatherInput : MonoBehaviour
     {
+        [Header("Cursor Spriters")]
+        [Tooltip("Sprite to use when right clicking")]
+        public Texture2D cursorClocked;
+        [Tooltip("Sprite to use as the default")]
+        public Texture2D cursorUnClocked;
+
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction zoomAction;
@@ -75,12 +79,14 @@ namespace PolyGo.Player
         private void OnRotatePerformed(InputAction.CallbackContext context)
         {
             _isRotating = true;
+            Cursor.SetCursor(cursorClocked, Vector2.zero, CursorMode.Auto);
             _rotateValue = context.ReadValue<Vector2>();
         }
 
         private void OnRotateCanceled(InputAction.CallbackContext context)
         {
             _isRotating = false;
+            Cursor.SetCursor(cursorUnClocked, Vector2.zero, CursorMode.Auto);
             _rotateValue = Vector2.zero;
         }
     }

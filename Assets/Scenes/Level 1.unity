@@ -12404,11 +12404,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2837232987786678659, guid: 1963e973e14a129459fe1302de028568,
-        type: 3}
-      propertyPath: deathRotation.x
-      value: -90
-      objectReference: {fileID: 0}
     - target: {fileID: 8988271260943891607, guid: 1963e973e14a129459fe1302de028568,
         type: 3}
       propertyPath: m_LocalPosition.x

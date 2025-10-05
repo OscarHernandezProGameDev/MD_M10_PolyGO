@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56001ac8ff53e6d43ba370cbfb453375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorClocked: {fileID: 2800000, guid: f22437f8857a82246811e2df07f2d7d6, type: 3}
+  cursorUnClocked: {fileID: 2800000, guid: c288c2d3af404dd43acafe3757ba119c, type: 3}
 --- !u!114 &3011514611009189511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618fa74c4e4899843b1a527cb069135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathRotation: {x: 90, y: 0, z: 0}
+  deathRotation: {x: -90, y: 0, z: 0}
   duration: 0.3
   ease: 31
 --- !u!1 &1449580402744704097
