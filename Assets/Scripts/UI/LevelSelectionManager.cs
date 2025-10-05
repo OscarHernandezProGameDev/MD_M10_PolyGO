@@ -69,6 +69,7 @@ namespace PolyGo
             UpdateLevelPosition();
             UpdateLevelName();
             UpdatePlayButtonState();
+            UpdateLevelVisuals();
         }
 
         private void UpdateLevelPosition()
@@ -90,6 +91,34 @@ namespace PolyGo
                 playLevelButton.interactable = true;
             else
                 playLevelButton.interactable = false;
+        }
+
+        private void UpdateLevelVisuals()
+        {
+            for(int i = 0; i < selectableLevels.Length; i++)
+            {
+                var levelGO = selectableLevels[i];
+
+                if(levelGO)
+                {
+                    bool isUnlocked=(i+1) <= highestUnlockedLevel;
+
+                    var lightsTransform = levelGO.transform.Find($"Lights Level {i + 1}");
+                    var padlockTransform = levelGO.transform.Find("padlock");
+
+                    if(lightsTransform)
+                        lightsTransform.gameObject.SetActive(isUnlocked);
+
+                    if(padlockTransform)
+                    {
+                        // El nivel 0 siempre estara desactivado
+                        if(i==0)
+                            padlockTransform.gameObject.SetActive(false);
+                        else
+                            padlockTransform.gameObject.SetActive(!isUnlocked);
+                    }
+                }
+            }
         }
     }
 }

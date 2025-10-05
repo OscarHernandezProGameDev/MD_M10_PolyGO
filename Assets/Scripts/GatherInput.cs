@@ -39,6 +39,7 @@ namespace PolyGo.Player
             moveAction = playerInput.actions["Move"];
             zoomAction = playerInput.actions["Zoom"];
             rotateAction = playerInput.actions["Rotate"];
+            Cursor.SetCursor(cursorUnClocked, Vector2.zero, CursorMode.Auto);
         }
 
         private void OnEnable()
