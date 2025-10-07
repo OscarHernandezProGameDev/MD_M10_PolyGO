@@ -137,6 +137,11 @@ namespace PolyGo
             }
         }
 
+        private void OnDisable()
+        {
+            DOTween.KillAll();
+        }
+
         private void ShowPrototypeMessage()
         {
             endOfPrototypeMessage.SetActive(true);
