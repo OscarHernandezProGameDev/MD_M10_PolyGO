@@ -100,7 +100,7 @@ namespace PolyGo
             if (currentLevel < totalLevels)
             {
                 currentLevel++;
-                SceneManager.LoadScene($"Level{currentLevel}");
+                SceneManager.LoadScene($"Level {currentLevel}");
             }
             else
                 ShowPrototypeMessage();
