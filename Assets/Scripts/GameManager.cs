@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using PolyGo.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,11 @@ namespace PolyGo
 
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private int currentLevel = 1;
+        [SerializeField] private int totalLevels = 2;
+        [SerializeField] private TextMeshProUGUI levelName;
+        [SerializeField] private GameObject endOfPrototypeMessage;
+
         [SerializeField] private float delay;
 
         public UnityEvent setUpEvent;
@@ -89,6 +95,17 @@ namespace PolyGo
             SceneManager.LoadScene(scene.name);
         }
 
+        public void ContinueNextLevel()
+        {
+            if (currentLevel < totalLevels)
+            {
+                currentLevel++;
+                SceneManager.LoadScene($"Level{currentLevel}");
+            }
+            else
+                ShowPrototypeMessage();
+        }
+
         public void UpdateTurn()
         {
             switch (_currentTurn)
@@ -120,6 +137,18 @@ namespace PolyGo
             }
         }
 
+        private void ShowPrototypeMessage()
+        {
+            endOfPrototypeMessage.SetActive(true);
+            StartCoroutine(GoToMainMenu());
+        }
+
+        private IEnumerator GoToMainMenu()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("MainMenu");
+        }
+
         IEnumerator RunGameLoop()
         {
             yield return StartCoroutine(StartLevelRoutine());
@@ -144,6 +173,9 @@ namespace PolyGo
             playerManager.playerInput.InputEnabled = false;
 
             endLevelEvent?.Invoke();
+
+            levelName.text = $"Level {currentLevel}";
+
             while (!_hasLevelFinished)
             {
                 // Boton de continuar al siguiente nivel
