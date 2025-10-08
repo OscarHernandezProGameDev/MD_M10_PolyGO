@@ -24,7 +24,12 @@ namespace PolyGo
                 .SetEase(ease);
         }
 
-        public void Die() => StartCoroutine(DeathRoutine());
+        public void Die()
+        {
+            SoundManager.Instance.PlaySoundFX(SoundManager.Instance.attackSlash);
+
+            StartCoroutine(DeathRoutine());
+        }
 
         private void Awake()
         {
@@ -33,6 +38,8 @@ namespace PolyGo
 
         IEnumerator DeathRoutine()
         {
+            SoundManager.Instance.PlaySoundFX(SoundManager.Instance.enemyDeathUpSound);
+
             yield return new WaitForSeconds(deathDelay);
 
             Vector3 offscreenPos = transform.position + offscreenOffset;
@@ -48,6 +55,8 @@ namespace PolyGo
                 transform.position = capturePos + offscreenOffset;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 MoveOffGrid(capturePos);
+                SoundManager.Instance.PlaySoundFX(SoundManager.Instance.enemyDeathDownSound);
+
                 yield return new WaitForSeconds(moveTime);
 
                 ToggleShadows();

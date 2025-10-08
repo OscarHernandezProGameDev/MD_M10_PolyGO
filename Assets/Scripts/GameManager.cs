@@ -131,6 +131,8 @@ namespace PolyGo
 
         private void Start()
         {
+            SoundManager.Instance.PlayMusic(SoundManager.Instance.gameMusic);
+
             if (gridSystem != null && playerManager != null)
             {
                 StartCoroutine(RunGameLoop());

@@ -73,6 +73,8 @@ namespace PolyGo
                         if (faceDestination)
                             sequence.Append(RotateToDestination());
 
+                        SoundManager.Instance.PlaySoundFX(SoundManager.Instance.moveSound);
+
                         sequence.Append
                         (
                             transform.DOMove(destinationPosition, moveSpeed)

@@ -78,11 +78,14 @@ namespace PolyGo
 
                 // el enemigo se abalanza sobre el player
                 enemyController.Move(positionPlayer, 0f);
+                SoundManager.Instance.PlaySoundFX(SoundManager.Instance.attackSlashWithDelay);
+
                 while (enemyController.IsMoving)
                     yield return null;
 
                 // Attack Player
                 enemyAttack.Attack();
+                SoundManager.Instance.PlaySoundFX(SoundManager.Instance.playerFall);
             }
             else
             {

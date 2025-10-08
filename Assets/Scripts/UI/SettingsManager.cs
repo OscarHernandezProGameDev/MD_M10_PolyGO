@@ -418,8 +418,8 @@ namespace PolyGo
             PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
             PlayerPrefs.SetFloat("SFXVolume", soundFXSlider.value);
 
-            PlayerPrefs.SetInt("MusicOn", musicToggle.isOn ? 1 : 0);
-            PlayerPrefs.SetInt("SFXOn", soundFXToggle.isOn ? 1 : 0);
+            PlayerPrefs.SetInt("MusicMute", musicToggle.isOn ? 1 : 0);
+            PlayerPrefs.SetInt("SFXMute", soundFXToggle.isOn ? 1 : 0);
 
             //Video data a guardar
             PlayerPrefs.SetInt("ResolutionIndex", resolutionDropdown.value);
@@ -443,8 +443,8 @@ namespace PolyGo
             musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
             soundFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
-            musicToggle.isOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
-            soundFXToggle.isOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
+            musicToggle.isOn = PlayerPrefs.GetInt("MusicMute", 1) == 1;
+            soundFXToggle.isOn = PlayerPrefs.GetInt("SFXMute", 1) == 1;
 
             // Aplicar los valores cargados del audiop
             SetGeneralVolume(generalVolumeSlider.value);

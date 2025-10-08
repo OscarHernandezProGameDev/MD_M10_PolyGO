@@ -18,6 +18,8 @@ namespace PolyGo
 
         void Start()
         {
+            SoundManager.Instance.PlayMusic(SoundManager.Instance.menuMusic);
+
             // Tome el valor de la selección de personaje de PlayerPrefs, si no existe, establezca el personaje predeterminado Character1 (con indice 0)
             selectedCharacter = PlayerPrefs.GetInt(selectedCharacterKey, 0);
             ShowSelectedCharacter();
